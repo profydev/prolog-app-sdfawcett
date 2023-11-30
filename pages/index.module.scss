@@ -1,12 +1,46 @@
 .header {
   width: 100%;
   height: 80px;
-  padding: 0 2rem;
+  padding: 0 7rem;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: white;
+}
+
+.header nav {
+  width: 40%;
+}
+
+.linkContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.linkContainer li {
+  list-style: none;
+}
+
+.linkContainer a {
+  text-decoration: none;
+  color: #667085;
+  cursor: pointer;
+}
+
+.dashboardLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.85rem;
+  width: 10rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 8px;
+  background-color: #7f56d9;
+  color: #fff;
+  text-decoration: none;
 }
 
 .contactButton {

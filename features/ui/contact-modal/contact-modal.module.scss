@@ -1,3 +1,5 @@
+@import "@styles/color";
+
 .modalOverlay {
   z-index: 9999;
   width: 100vw;
@@ -13,8 +15,48 @@
 .modalBox {
   display: block;
   background: white;
-  width: 70%;
-  height: 70%;
+  width: 25rem;
+  height: 18rem;
   padding: 1rem;
   border-radius: 1rem;
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.125rem;
+  color: $gray-900;
+}
+
+.description {
+  text-align: center;
+  line-height: 1.25rem;
+  color: $gray-500;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  margin-top: auto;
+}
+
+.buttons > *:last-child {
+  border-radius: 8px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex: 1;
 }

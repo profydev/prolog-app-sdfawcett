@@ -42,9 +42,7 @@ const IssuesPage = () => {
         <img src="/icons/message.svg" alt="Contact" />
       </button>
 
-      <ContactModal isOpen={isOpen} toggle={toggle}>
-        <div>Yaay!!! Our Modal is rendered Properly.</div>
-      </ContactModal>
+      <ContactModal isOpen={isOpen} toggle={toggle} />
     </div>
   );
 };

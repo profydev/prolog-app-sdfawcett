@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
-import Link from "next/link";
 import classNames from "classnames";
 import styles from "./contact-modal.module.scss";
+import { Button, ButtonColor, ButtonSize } from "../button";
 
 interface ModalType {
   children?: ReactNode;
@@ -28,10 +28,26 @@ export function ContactModal(props: ModalType) {
                 answer within 24 hours.
               </p>
 
-              <div id="modalButtons" className={styles.buttons}>
-                <Link href="mailto:profysupport@prolog-app.com?subject=Support%20Request%20:&body=message%20goes%20here">
+              <div id="modalButtons" className={styles.buttonContainer}>
+                <Button
+                  className={styles.button}
+                  size={ButtonSize.lg}
+                  color={ButtonColor.gray}
+                  onClick={props.toggle}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  className={styles.button}
+                  size={ButtonSize.lg}
+                  color={ButtonColor.primary}
+                  onClick={() =>
+                    (location.href =
+                      "mailto:prolog@profy.dev?subject=Support%20Request%20:&body=message%20goes%20here")
+                  }
+                >
                   Open Email App
-                </Link>
+                </Button>
               </div>
             </div>
           </section>

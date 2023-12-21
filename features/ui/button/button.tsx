@@ -1,3 +1,4 @@
+import { ButtonHTMLAttributes } from "react";
 import classNames from "classnames";
 import styles from "./button.module.scss";
 
@@ -24,7 +25,6 @@ type ButtonProps = {
   color?: ButtonColor;
   className?: string;
   onClick: () => void;
-  isDisabled?: boolean;
 };
 
 export function Button({
@@ -33,8 +33,7 @@ export function Button({
   color = ButtonColor.default,
   className,
   onClick,
-  isDisabled = false,
-}: ButtonProps) {
+}: ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps) {
   return (
     <button
       className={classNames(
@@ -44,7 +43,6 @@ export function Button({
         className,
       )}
       onClick={onClick}
-      disabled={isDisabled}
     >
       {children}
     </button>

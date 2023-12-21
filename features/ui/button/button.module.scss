@@ -17,8 +17,8 @@
   appearance: none;
 
   &::-moz-focus-inner {
-    border: 0;
-    padding: 0;
+    border: space.$s0;
+    padding: space.$s0;
   }
 
   &.sm {
@@ -50,8 +50,8 @@
     outline: none;
     border: none;
     color: color.$gray-100;
-    padding: 0;
-    margin: 0;
+    padding: space.$s0;
+    margin: space.$s0;
   }
 
   &.primary {

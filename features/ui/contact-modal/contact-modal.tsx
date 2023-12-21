@@ -20,7 +20,7 @@ export function ContactModal(props: ModalType) {
           >
             <div className={styles.modalBody}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/icons/mail.svg" alt="" className={styles.icon} />
+              <img src="/icons/mail.svg" alt="mail" className={styles.icon} />
 
               <h2 className={styles.title}>Contact Us Via EMail</h2>
               <p className={styles.description}>
@@ -28,7 +28,7 @@ export function ContactModal(props: ModalType) {
                 answer within 24 hours.
               </p>
 
-              <div id="modalButtons" className={styles.buttonContainer}>
+              <div className={styles.buttonContainer}>
                 <Button
                   className={styles.button}
                   size={ButtonSize.lg}

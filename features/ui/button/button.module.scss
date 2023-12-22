@@ -57,25 +57,25 @@
   &.primary {
     background-color: color.$primary-600;
     border-color: color.$primary-600;
-    color: #fff;
+    color: color.$white;
   }
 
   &.primary:hover {
     background-color: color.$primary-700;
-    color: #fff;
+    color: color.$white;
   }
 
   &.primary:focus {
     background-color: color.$primary-600;
     border-color: color.$primary-600;
-    color: #fff;
+    color: color.$white;
     outline: 0.3rem solid color.$primary-100;
   }
 
   &.primary:disabled {
     background-color: color.$primary-200;
     border-color: color.$primary-200;
-    color: #fff;
+    color: color.$white;
   }
 
   &.secondary {
@@ -102,7 +102,7 @@
   }
 
   &.gray {
-    background-color: #fff;
+    background-color: color.$white;
     border-color: color.$gray-300;
     color: color.$gray-700;
   }
@@ -113,13 +113,13 @@
   }
 
   &.gray:focus {
-    background-color: #fff;
+    background-color: color.$white;
     color: color.$gray-700;
     outline: 0.3rem solid color.$gray-300;
   }
 
   &.gray:disabled {
-    background-color: #fff;
+    background-color: color.$white;
     border-color: color.$gray-200;
     color: color.$gray-300;
   }
@@ -169,25 +169,25 @@
   &.error {
     background-color: color.$error-600;
     border-color: color.$error-600;
-    color: #fff;
+    color: color.$white;
   }
 
   &.error:hover {
     background-color: color.$error-700;
     border-color: color.$error-700;
-    color: #fff;
+    color: color.$white;
   }
 
   &.error:focus {
     background-color: color.$error-600;
     border-color: color.$error-600;
     outline: 0.3rem solid color.$error-100;
-    color: #fff;
+    color: color.$white;
   }
 
   &.error:disabled {
     background-color: color.$error-200;
     border-color: color.$error-200;
-    color: #fff;
+    color: color.$white;
   }
 }

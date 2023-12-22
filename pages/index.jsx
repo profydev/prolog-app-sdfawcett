@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Routes } from "@config/routes";
 import styles from "./index.module.scss";
+import { ContactModal } from "../features/ui/contact-modal";
 
 const navItems = [
   { text: "Home", href: Routes.home },
@@ -8,9 +10,13 @@ const navItems = [
   { text: "Pricing", href: Routes.pricing },
 ];
 
-console.log(navItems);
-
 const IssuesPage = () => {
+  const [isOpen, setisOpen] = useState(false);
+
+  const toggle = () => {
+    setisOpen(!isOpen);
+  };
+
   return (
     <div>
       <header className={styles.header}>
@@ -31,17 +37,12 @@ const IssuesPage = () => {
           Open Dashboard
         </a>
       </header>
-      <button
-        className={styles.contactButton}
-        onClick={() =>
-          alert(
-            "Implement this in Challenge 2 - Modal:\n\nhttps://profy.dev/rjs-challenge-modal",
-          )
-        }
-      >
+      <button className={styles.contactButton} onClick={toggle}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/icons/message.svg" alt="Contact" />
       </button>
+
+      <ContactModal isOpen={isOpen} toggle={toggle} />
     </div>
   );
 };

@@ -1,0 +1,61 @@
+@use "@styles/color";
+@use "@styles/space";
+
+.modalOverlay {
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: space.$s0;
+  background: rgb(0 0 0 / 70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+.modalBox {
+  display: block;
+  background: white;
+  width: 25rem;
+  padding: space.$s6;
+  gap: space.$s8;
+  border-radius: space.$s3;
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  width: space.$s12;
+  height: space.$s12;
+  margin-bottom: space.$s4;
+}
+
+.title {
+  font-size: 1.125rem;
+  color: color.$gray-900;
+  margin-bottom: space.$s0;
+}
+
+.description {
+  text-align: center;
+  line-height: space.$s5;
+  color: color.$gray-500;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  margin-top: space.$s4;
+  gap: space.$s3;
+}
+
+.button {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}

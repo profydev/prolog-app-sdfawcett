@@ -19,11 +19,19 @@ export enum ButtonColor {
   error = "error",
 }
 
+export enum ButtonIcon {
+  none = "none",
+  only = "only",
+  leading = "leading",
+  trailing = "trailing",
+}
+
 type ButtonProps = {
   children: React.ReactNode;
   size?: ButtonSize;
   color?: ButtonColor;
   className?: string;
+  icon?: ButtonIcon;
   onClick: () => void;
 };
 
@@ -31,6 +39,7 @@ export function Button({
   children,
   size = ButtonSize.md,
   color = ButtonColor.default,
+  icon = ButtonIcon.none,
   className,
   onClick,
 }: ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps) {
@@ -40,6 +49,7 @@ export function Button({
         styles.button,
         styles[size],
         styles[color],
+        styles[icon],
         className,
       )}
       onClick={onClick}

@@ -21,6 +21,7 @@
     padding: space.$s0;
   }
 
+  /* Button Size */
   &.sm {
     padding: space.$s2;
     height: space.$s8;
@@ -54,6 +55,7 @@
     margin: space.$s0;
   }
 
+  /* Button Color */
   &.primary {
     background-color: color.$primary-600;
     border-color: color.$primary-600;
@@ -189,5 +191,28 @@
     background-color: color.$error-200;
     border-color: color.$error-200;
     color: color.$white;
+  }
+
+  /* Button Icon */
+  &.only {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.leading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  &.trailing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+    gap: 1rem;
   }
 }

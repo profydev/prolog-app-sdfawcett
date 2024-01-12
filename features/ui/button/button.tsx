@@ -17,6 +17,7 @@ export enum ButtonColor {
   empty = "empty",
   emptyGray = "emptyGray",
   error = "error",
+  emptyError = "emptyError",
 }
 
 export enum ButtonIcon {

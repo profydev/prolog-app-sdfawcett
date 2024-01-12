@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Meta, StoryFn } from "@storybook/react";
 import { Button, ButtonSize, ButtonColor, ButtonIcon } from "./button";
 
@@ -65,6 +66,13 @@ Error.args = {
   children: "Label",
 };
 
+export const EmptyError = Template.bind({});
+EmptyError.args = {
+  size: ButtonSize.sm,
+  color: ButtonColor.emptyError,
+  children: "Label",
+};
+
 export const IconOnly = Template.bind({});
 IconOnly.args = {
   size: ButtonSize.sm,
@@ -72,7 +80,7 @@ IconOnly.args = {
   icon: ButtonIcon.only,
   children: (
     <>
-      <img src="icons/circle.svg" alt="" />
+      <Image src="icons/circle.svg" alt="circle icon" width={20} height={20} />
     </>
   ),
 };
@@ -84,7 +92,8 @@ IconLeading.args = {
   icon: ButtonIcon.leading,
   children: (
     <>
-      <p>Button CTA</p> <img src="icons/circle.svg" alt="" />
+      <p>Button CTA</p>
+      <Image src="icons/circle.svg" alt="circle icon" width={20} height={20} />
     </>
   ),
 };
@@ -96,7 +105,8 @@ IconTrailing.args = {
   icon: ButtonIcon.trailing,
   children: (
     <>
-      <p>Button CTA</p> <img src="icons/circle.svg" alt="" />
+      <p>Button CTA</p>
+      <Image src="icons/circle.svg" alt="circle icon" width={20} height={20} />
     </>
   ),
 };

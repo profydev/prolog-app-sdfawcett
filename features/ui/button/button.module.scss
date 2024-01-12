@@ -193,6 +193,27 @@
     color: color.$white;
   }
 
+  &.emptyError {
+    background-color: none;
+    border-color: transparent;
+    color: color.$error-700;
+  }
+
+  &.emptyError:hover {
+    background-color: color.$error-50;
+    color: color.$error-700;
+  }
+
+  &.emptyError:focus {
+    background-color: none;
+    color: color.$error-700;
+  }
+
+  &.emptyError:disabled {
+    background-color: none;
+    color: color.$error-300;
+  }
+
   /* Button Icon */
   &.only {
     display: flex;
@@ -204,15 +225,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
-    gap: 1rem;
+    flex-direction: row-reverse;
+    gap: 0.625rem;
   }
 
   &.trailing {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row-reverse;
-    gap: 1rem;
+    flex-direction: row;
+    gap: 0.625rem;
   }
 }

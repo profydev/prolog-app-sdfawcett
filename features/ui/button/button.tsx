@@ -17,14 +17,6 @@ export enum ButtonColor {
   empty = "empty",
   emptyGray = "emptyGray",
   error = "error",
-  emptyError = "emptyError",
-}
-
-export enum ButtonIcon {
-  none = "none",
-  only = "only",
-  leading = "leading",
-  trailing = "trailing",
 }
 
 type ButtonProps = {
@@ -32,7 +24,6 @@ type ButtonProps = {
   size?: ButtonSize;
   color?: ButtonColor;
   className?: string;
-  icon?: ButtonIcon;
   onClick: () => void;
 };
 
@@ -40,7 +31,6 @@ export function Button({
   children,
   size = ButtonSize.md,
   color = ButtonColor.default,
-  icon = ButtonIcon.none,
   className,
   onClick,
 }: ButtonHTMLAttributes<HTMLButtonElement> & ButtonProps) {
@@ -50,7 +40,6 @@ export function Button({
         styles.button,
         styles[size],
         styles[color],
-        styles[icon],
         className,
       )}
       onClick={onClick}

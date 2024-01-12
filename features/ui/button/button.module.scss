@@ -21,7 +21,6 @@
     padding: space.$s0;
   }
 
-  /* Button Size */
   &.sm {
     padding: space.$s2;
     height: space.$s8;
@@ -55,29 +54,28 @@
     margin: space.$s0;
   }
 
-  /* Button Color */
   &.primary {
     background-color: color.$primary-600;
     border-color: color.$primary-600;
-    color: color.$white;
+    color: #fff;
   }
 
   &.primary:hover {
     background-color: color.$primary-700;
-    color: color.$white;
+    color: #fff;
   }
 
   &.primary:focus {
     background-color: color.$primary-600;
     border-color: color.$primary-600;
-    color: color.$white;
+    color: #fff;
     outline: 0.3rem solid color.$primary-100;
   }
 
   &.primary:disabled {
     background-color: color.$primary-200;
     border-color: color.$primary-200;
-    color: color.$white;
+    color: #fff;
   }
 
   &.secondary {
@@ -104,7 +102,7 @@
   }
 
   &.gray {
-    background-color: color.$white;
+    background-color: #fff;
     border-color: color.$gray-300;
     color: color.$gray-700;
   }
@@ -115,13 +113,13 @@
   }
 
   &.gray:focus {
-    background-color: color.$white;
+    background-color: #fff;
     color: color.$gray-700;
     outline: 0.3rem solid color.$gray-300;
   }
 
   &.gray:disabled {
-    background-color: color.$white;
+    background-color: #fff;
     border-color: color.$gray-200;
     color: color.$gray-300;
   }
@@ -171,69 +169,25 @@
   &.error {
     background-color: color.$error-600;
     border-color: color.$error-600;
-    color: color.$white;
+    color: #fff;
   }
 
   &.error:hover {
     background-color: color.$error-700;
     border-color: color.$error-700;
-    color: color.$white;
+    color: #fff;
   }
 
   &.error:focus {
     background-color: color.$error-600;
     border-color: color.$error-600;
     outline: 0.3rem solid color.$error-100;
-    color: color.$white;
+    color: #fff;
   }
 
   &.error:disabled {
     background-color: color.$error-200;
     border-color: color.$error-200;
-    color: color.$white;
-  }
-
-  &.emptyError {
-    background-color: none;
-    border-color: transparent;
-    color: color.$error-700;
-  }
-
-  &.emptyError:hover {
-    background-color: color.$error-50;
-    color: color.$error-700;
-  }
-
-  &.emptyError:focus {
-    background-color: none;
-    color: color.$error-700;
-  }
-
-  &.emptyError:disabled {
-    background-color: none;
-    color: color.$error-300;
-  }
-
-  /* Button Icon */
-  &.only {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &.leading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row-reverse;
-    gap: 0.625rem;
-  }
-
-  &.trailing {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 0.625rem;
+    color: #fff;
   }
 }

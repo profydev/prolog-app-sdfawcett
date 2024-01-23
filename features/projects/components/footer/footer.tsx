@@ -1,5 +1,13 @@
 import React from "react";
+import Image from "next/image";
 import styles from "./footer.module.scss";
+
+const navItems = [
+  { title: "Docs", url: "#" },
+  { title: "API", url: "#" },
+  { title: "Help", url: "#" },
+  { title: "Community", url: "#" },
+];
 
 export function Footer() {
   return (
@@ -8,29 +16,16 @@ export function Footer() {
         <p>Version: </p>
       </div>
       <ul className={styles.nav}>
-        <li className={styles.navItem}>
-          <a className={styles.link} href="#">
-            Docs
-          </a>
-        </li>
-        <li className={styles.navItem}>
-          <a className={styles.link} href="#">
-            API
-          </a>
-        </li>
-        <li className={styles.navItem}>
-          <a className={styles.link} href="#">
-            Help
-          </a>
-        </li>
-        <li className={styles.navItem}>
-          <a className={styles.link} href="#">
-            Community
-          </a>
-        </li>
+        {navItems.map((item) => (
+          <li key={item.title} className={styles.navItem}>
+            <a className={styles.link} href={item.url}>
+              {item.title}
+            </a>
+          </li>
+        ))}
       </ul>
       <div className={styles.logoContainer}>
-        <img src="/icons/logo-small.svg" alt="logo" />
+        <Image src="/icons/logo-small.svg" width={23} height={33} alt="logo" />
       </div>
     </footer>
   );

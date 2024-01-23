@@ -13,7 +13,7 @@ export function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.version}>
-        <p>Version: </p>
+        <p>Version: {process.env.appVersion}</p>
       </div>
       <ul className={styles.nav}>
         {navItems.map((item) => (

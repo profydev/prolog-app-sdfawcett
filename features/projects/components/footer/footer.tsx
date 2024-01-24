@@ -11,11 +11,11 @@ const navItems = [
 
 export function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} data-cy="footer-container">
       <div className={styles.version}>
         <p>Version: {process.env.appVersion}</p>
       </div>
-      <ul className={styles.nav}>
+      <ul className={styles.nav} data-cy="footer-ul">
         {navItems.map((item) => (
           <li key={item.title} className={styles.navItem}>
             <a className={styles.link} href={item.url}>

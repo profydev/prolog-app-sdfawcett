@@ -35,7 +35,7 @@ describe("Footer", () => {
         .contains("Community")
         .should("have.attr", "href", "#");
 
-      // check that correct number of footer links exists
+      // check that correct number of footer links exist
       cy.get('[data-cy="footer-ul"]').find("li").should("have.length", 4);
     });
 

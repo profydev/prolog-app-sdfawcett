@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { version } = require('./package.json');
+import { version } from './package.json';
 
 const nextConfig = {
   reactStrictMode: true,
@@ -15,4 +15,4 @@ const nextConfig = {
 
 };
 
-module.exports = nextConfig;
+export default nextConfig;

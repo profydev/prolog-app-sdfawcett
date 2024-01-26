@@ -49,6 +49,18 @@ describe("Sidebar Navigation", () => {
 
       // check that text is not rendered
       cy.get("nav").contains("Issues").should("not.exist");
+
+      // check that small logo is visible
+      cy.get('[data-cy="header"]')
+        .find('[data-cy="logo-small"]')
+        .should("be.visible");
+    });
+
+    // check that large logo is visible
+    it("nav header should display large logo image", () => {
+      cy.get('[data-cy="header"]')
+        .find('[data-cy="logo-large"]')
+        .should("be.visible");
     });
   });
 
@@ -98,6 +110,13 @@ describe("Sidebar Navigation", () => {
       cy.get("img[alt='close menu']").click();
       cy.wait(500);
       isNotInViewport("nav");
+    });
+
+    // check that large logo is visible
+    it("nav header should display large logo image", () => {
+      cy.get('[data-cy="header"]')
+        .find('[data-cy="logo-large"]')
+        .should("be.visible");
     });
   });
 });

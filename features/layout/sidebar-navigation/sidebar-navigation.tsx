@@ -34,13 +34,14 @@ export function SidebarNavigation() {
           isSidebarCollapsed && styles.isCollapsed,
         )}
       >
-        <header className={styles.header}>
+        <header className={styles.header} data-cy="header">
           {isSidebarCollapsed ? (
             <Image
               src="/icons/logo-small.svg"
               width={23}
               height={33}
               alt="logo"
+              data-cy="logo-small"
             />
           ) : (
             <Image
@@ -48,6 +49,7 @@ export function SidebarNavigation() {
               width={118}
               height={33}
               alt="logo"
+              data-cy="logo-large"
             />
           )}
 

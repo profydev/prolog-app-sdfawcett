@@ -1,7 +1,7 @@
 import { ProjectStatus } from "@api/projects.types";
 import mockProjects from "../fixtures/projects.json";
 
-describe("Project List", () => {
+describe("project list", () => {
   beforeEach(() => {
     // setup request mock
     cy.intercept("GET", "https://prolog-api.profy.dev/project", {
@@ -43,6 +43,54 @@ describe("Project List", () => {
             .find("a")
             .should("have.attr", "href", "/dashboard/issues");
         });
+    });
+
+    describe("project list error", () => {
+      beforeEach(() => {
+        cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+          body: {},
+          statusCode: 400,
+        }).as("getProjectsWithError");
+
+        cy.visit("http://localhost:3000/dashboard");
+      });
+      it("error message displayed on failed request", () => {
+        // intercept request with error
+        cy.wait("@getProjectsWithError")
+          .wait("@getProjectsWithError")
+          .wait("@getProjectsWithError")
+          .wait("@getProjectsWithError");
+
+        // check that error message text renders
+        cy.get("main").contains(
+          "There was a problem while loading the project data",
+        );
+      });
+
+      it("data is successfully retrieved after inital error, data is displayed", () => {
+        // intercept request with error
+        cy.wait("@getProjectsWithError")
+          .wait("@getProjectsWithError")
+          .wait("@getProjectsWithError")
+          .wait("@getProjectsWithError");
+
+        // check that error message text renders
+        cy.get("main").contains(
+          "There was a problem while loading the project data",
+        );
+
+        // intercept request with data
+        cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+          fixture: "projects.json",
+        }).as("getProjects");
+
+        cy.get("main").contains("Try again").click();
+
+        cy.wait("@getProjects");
+
+        // check that project list is displayed
+        cy.get('[data-cy="project-list"]').find("li").should("have.length", 3);
+      });
     });
   });
 });

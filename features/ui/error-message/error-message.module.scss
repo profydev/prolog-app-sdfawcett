@@ -1,0 +1,31 @@
+@use "@styles/color";
+@use "@styles/font";
+@use "@styles/space";
+
+.errorMessage {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: space.$s2;
+  background-color: color.$error-25;
+  border: 1px solid color.$error-300;
+  border-radius: 8px;
+  padding: 0 space.$s4;
+  padding-right: space.$s3;
+
+  p {
+    color: color.$error-700;
+    font: font.$text-sm-medium;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: space.$s3;
+    background: none;
+    border: none;
+    color: color.$error-700;
+    font: font.$text-sm-medium;
+    cursor: pointer;
+  }
+}

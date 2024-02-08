@@ -21,9 +21,15 @@ describe("Issue List", () => {
     // open issues page
     cy.visit(`http://localhost:3000/dashboard/issues`);
 
+    // loading animation should be visible
+    cy.get('[data-cy="loading-animation"]').should("be.visible");
+
     // wait for request to resolve
     cy.wait(["@getProjects", "@getIssuesPage1"]);
     cy.wait(500);
+
+    // loading animation should no longer exist in dom
+    cy.get('[data-cy="loading-animation"]').should("not.exist");
 
     // set button aliases
     cy.get("button").contains("Previous").as("prev-button");

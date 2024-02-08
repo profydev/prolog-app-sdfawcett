@@ -2,12 +2,17 @@ import { ProjectCard } from "../project-card";
 import { ErrorMessage } from "../../../ui/error-message";
 import { useGetProjects } from "../../api/use-get-projects";
 import styles from "./project-list.module.scss";
+import { LoadingAnimation } from "features/ui/loading-animation";
 
 export function ProjectList() {
   const { data, isLoading, isError, error, refetch } = useGetProjects();
 
   if (isLoading) {
-    return <div>Loading</div>;
+    return (
+      <div className={styles.loadingContainer}>
+        <LoadingAnimation />
+      </div>
+    );
   }
 
   if (isError) {

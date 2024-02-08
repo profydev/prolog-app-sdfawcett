@@ -15,3 +15,13 @@
     grid-template-columns: repeat(auto-fit, 400px);
   }
 }
+
+// styles for the loading animation
+.loadingContainer {
+  margin: 9.5rem auto 0;
+  width: space.$s17;
+
+  @media (min-width: breakpoint.$desktop) {
+    margin-top: 8rem;
+  }
+}

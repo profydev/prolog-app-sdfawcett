@@ -1,6 +1,7 @@
 @use "@styles/color";
 @use "@styles/space";
 @use "@styles/font";
+@use "@styles/breakpoint";
 
 .container {
   background: white;
@@ -57,4 +58,14 @@
 
 .pageNumber {
   font: font.$text-sm-medium;
+}
+
+// styles for the loading animation
+.loadingContainer {
+  margin: 9.5rem auto 0;
+  width: space.$s17;
+
+  @media (min-width: breakpoint.$desktop) {
+    margin-top: 8rem;
+  }
 }

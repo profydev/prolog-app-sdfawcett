@@ -4,6 +4,7 @@ import { useGetProjects } from "@features/projects";
 import { useGetIssues } from "../../api/use-get-issues";
 import { IssueRow } from "./issue-row";
 import styles from "./issue-list.module.scss";
+import { LoadingAnimation } from "features/ui/loading-animation";
 
 export function IssueList() {
   const router = useRouter();
@@ -18,7 +19,11 @@ export function IssueList() {
   const projects = useGetProjects();
 
   if (projects.isLoading || issuesPage.isLoading) {
-    return <div>Loading</div>;
+    return (
+      <div className={styles.loadingContainer}>
+        <LoadingAnimation />
+      </div>
+    );
   }
 
   if (projects.isError) {

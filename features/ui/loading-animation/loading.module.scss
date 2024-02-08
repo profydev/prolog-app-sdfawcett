@@ -1,0 +1,32 @@
+@use "@styles/color";
+
+@keyframes loading-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  background-color: transparent;
+  border: 6px solid color.$primary-50;
+  border-radius: 100%;
+  border-left: 6px solid color.$primary-700;
+  aspect-ratio: 1/1;
+  animation: 1s linear infinite loading-spin;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: transparent;
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+    left: 1px;
+  }
+}

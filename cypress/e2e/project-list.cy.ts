@@ -11,6 +11,9 @@ describe("project list", () => {
     // open projects page
     cy.visit("http://localhost:3000/dashboard");
 
+    // loading animation should be visible
+    cy.get('[data-cy="loading-animation"]').should("be.visible");
+
     // wait for request to resolve
     cy.wait("@getProjects");
   });
@@ -27,6 +30,9 @@ describe("project list", () => {
         [ProjectStatus.warning]: "Warning",
         [ProjectStatus.error]: "Critical",
       };
+
+      // loading animation should no longer exist in dom
+      cy.get('[data-cy="loading-animation"]').should("not.exist");
 
       // get all project cards
       cy.get('[data-cy="main-content-container"]')

@@ -15,3 +15,12 @@
     grid-template-columns: repeat(auto-fit, 400px);
   }
 }
+
+.loadingContainer {
+  margin: 9.5rem auto 0;
+  width: space.$s17;
+
+  @media (min-width: breakpoint.$desktop) {
+    margin-top: 8rem;
+  }
+}

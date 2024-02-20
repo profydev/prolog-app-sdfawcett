@@ -1,0 +1,131 @@
+@use "@styles/color";
+@use "@styles/space";
+@use "@styles/font";
+
+.checkbox {
+  // apply default styles
+  position: relative;
+  color: color.$gray-700;
+
+  // custom checkbox
+  span {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid color.$gray-300;
+    border-radius: 6px;
+  }
+
+  // checkbox size
+  &.sm {
+    font: font.$text-sm-medium;
+    padding-left: space.$s7;
+
+    span {
+      width: space.$s4;
+      height: space.$s4;
+    }
+  }
+
+  &.md {
+    font: font.$text-md-medium;
+    padding-left: space.$s8;
+    padding-top: 0.1rem;
+
+    span {
+      width: space.$s5;
+      height: space.$s5;
+    }
+  }
+
+  &:hover input ~ span {
+    background-color: color.$primary-50;
+    border-color: color.$primary-600;
+  }
+
+  &:focus-within input ~ span {
+    box-shadow: 0 0 0 3px color.$primary-100;
+    border-color: color.$primary-300;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  // input checked
+  &.sm.check input:checked ~ span {
+    border-color: color.$primary-600;
+    background:
+      url("../../../public/icons/check-sm.svg") no-repeat center,
+      color.$primary-50;
+  }
+
+  &.md.check input:checked ~ span {
+    border-color: color.$primary-600;
+    background:
+      url("../../../public/icons/check-md.svg") no-repeat center,
+      color.$primary-50;
+  }
+
+  &.sm.partly input:checked ~ span {
+    border-color: color.$primary-600;
+    background:
+      url("../../../public/icons/partly-check-sm.svg") no-repeat center,
+      color.$primary-50;
+  }
+
+  &.md.partly input:checked ~ span {
+    border-color: color.$primary-600;
+    background:
+      url("../../../public/icons/partly-check-md.svg") no-repeat center,
+      color.$primary-50;
+  }
+
+  // input disabled
+  &:has(input:disabled) {
+    color: color.$gray-300;
+
+    &.md.check span,
+    &.sm.check span,
+    &.md.partly span,
+    &.sm.partly span {
+      background-color: color.$gray-100;
+      border-color: color.$gray-200;
+      box-shadow: none;
+    }
+
+    &.md.check input:checked ~ span {
+      border-color: color.$gray-200;
+      background:
+        url("../../../public/icons/check-grey-md.svg") no-repeat center,
+        color.$gray-100;
+    }
+
+    &.sm.check input:checked ~ span {
+      border-color: color.$gray-200;
+      background:
+        url("../../../public/icons/check-grey-sm.svg") no-repeat center,
+        color.$gray-100;
+    }
+
+    &.md.partly input:checked ~ span {
+      border-color: color.$gray-200;
+      background:
+        url("../../../public/icons/partly-grey-md.svg") no-repeat center,
+        color.$gray-100;
+    }
+
+    &.sm.partly input:checked ~ span {
+      border-color: color.$gray-200;
+      background:
+        url("../../../public/icons/partly-grey-sm.svg") no-repeat center,
+        color.$gray-100;
+    }
+  }
+}

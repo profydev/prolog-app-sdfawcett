@@ -29,9 +29,6 @@ const statusToText = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const { name, language, numIssues, numEvents24h, status } = project;
-  const issuesFilterQuery = new URLSearchParams({
-    project: name,
-  });
 
   return (
     <div className={styles.container}>
@@ -64,7 +61,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
       <div className={styles.bottomContainer}>
         <Link
-          href={`${Routes.issues}?${issuesFilterQuery}`}
+          href={`${Routes.issues}?page=1&project=${name}`}
           className={styles.viewIssuesAnchor}
         >
           View issues

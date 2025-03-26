@@ -31,6 +31,12 @@ describe("project list", () => {
         [ProjectStatus.error]: "Critical",
       };
 
+      const projectNameParams = [
+        "Frontend%20-%20Web%20Test",
+        "Backend",
+        "ML%20Service",
+      ];
+
       // loading animation should no longer exist in dom
       cy.get('[data-cy="loading-animation"]').should("not.exist");
 
@@ -47,7 +53,11 @@ describe("project list", () => {
           cy.wrap($el).contains(statusToText[status]);
           cy.wrap($el)
             .find("a")
-            .should("have.attr", "href", "/dashboard/issues");
+            .should(
+              "have.attr",
+              "href",
+              `/dashboard/issues?page=1&project=${projectNameParams[index]}`,
+            );
         });
     });
 

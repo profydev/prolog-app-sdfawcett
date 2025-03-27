@@ -126,12 +126,13 @@ ErrorEmptyDisabled.args = {
   disabled: true,
 };
 
-export const ErrorEmptyIconText = Template.bind({
+export const ErrorEmptyIconText = Template.bind({});
+ErrorEmptyIconText.args = {
   placeholder: "olivia@untitledui.com",
   ariaText: "empty text input with error, icon, and text",
   error: true,
   icon: "/icons/mail.svg",
-});
+};
 
 export const ErrorFilledIconText = Template.bind({});
 ErrorFilledIconText.args = {
@@ -168,10 +169,11 @@ ErrorFilledMessage.args = {
   errorText: "This is an error message",
 };
 
-export const ErrorDisabledMessage = Template.bind({
+export const ErrorDisabledMessage = Template.bind({});
+ErrorDisabledMessage.args = {
   placeholder: "olivia@untitledui.com",
   ariaText: "disabled text input with error and message",
   error: true,
   disabled: true,
   errorText: "This is an error message",
-});
+};

@@ -19,7 +19,7 @@
     border-radius: 8px;
     box-shadow: 0 1px 2px 0 #1018280d;
     box-sizing: border-box;
-    padding: 0 space.$s4;
+    padding: 0 space.$s3;
 
     input {
       width: 95%;
@@ -30,6 +30,7 @@
       border: none;
       background-color: transparent;
       box-sizing: border-box;
+      font-family: inherit;
 
       &::placeholder {
         color: color.$gray-500;
@@ -38,6 +39,13 @@
 
     &:focus-within {
       box-shadow: 0 0 0 4px color.$primary-100;
+      border: 1px solid color.$primary-300;
+    }
+
+    .inputIcon {
+      width: 1.25rem;
+      aspect-ratio: 1/1;
+      margin-right: space.$s2;
     }
   }
 

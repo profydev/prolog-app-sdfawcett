@@ -35,7 +35,7 @@ export const Input = ({
 
       <span className={style.inputBox}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        {icon ? <img src={icon} alt="" /> : null}
+        {icon ? <img src={icon} alt="" className={style.inputIcon} /> : null}
         <input {...inputProps} type="text" />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         {error ? <img src="/icons/alert-circle.svg" alt="" /> : null}

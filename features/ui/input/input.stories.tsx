@@ -22,7 +22,7 @@ const Template: StoryFn<typeof Input> = ({
   defaultValue,
   disabled,
 }) => (
-  <div style={{ padding: 50, width: "320px" }}>
+  <div style={{ padding: 50, maxWidth: "320px" }}>
     <Input
       error={error}
       label={label}
@@ -61,7 +61,7 @@ export const MailIconEmpty = Template.bind({});
 MailIconEmpty.args = {
   placeholder: "olivia@untitledui.com",
   ariaText: "empty text input with mail icon",
-  icon: "/icons/mail.svg",
+  icon: "/icons/mail-gray.svg",
 };
 
 export const MailIconFilled = Template.bind({});
@@ -69,7 +69,7 @@ MailIconFilled.args = {
   placeholder: "olivia@untitledui.com",
   ariaText: "filled text input with mail icon",
   defaultValue: "olivia@untitledui.com",
-  icon: "/icons/mail.svg",
+  icon: "/icons/mail-gray.svg",
 };
 
 export const MailIconDisabled = Template.bind({});
@@ -77,7 +77,7 @@ MailIconDisabled.args = {
   placeholder: "olivia@untitledui.com",
   ariaText: "disabled text input with mail icon",
   disabled: true,
-  icon: "/icons/mail.svg",
+  icon: "/icons/mail-gray.svg",
 };
 
 export const LabelEmpty = Template.bind({});
@@ -92,7 +92,7 @@ LabelEmptyIcon.args = {
   placeholder: "olivia@untitledui.com",
   ariaText: "empty text input with label and icon",
   label: "Email",
-  icon: "/icons/mail.svg",
+  icon: "/icons/mail-gray.svg",
 };
 
 export const HintEmptyIcon = Template.bind({});
@@ -100,7 +100,7 @@ HintEmptyIcon.args = {
   placeholder: "olivia@untitled.com",
   ariaText: "empty text input with hint and icon",
   hint: "This is a hint to help the user",
-  icon: "/icons/mail.svg",
+  icon: "/icons/mail-gray.svg",
 };
 
 export const ErrorEmptyIcon = Template.bind({});
@@ -131,7 +131,7 @@ ErrorEmptyIconText.args = {
   placeholder: "olivia@untitledui.com",
   ariaText: "empty text input with error, icon, and text",
   error: true,
-  icon: "/icons/mail.svg",
+  icon: "/icons/mail-gray.svg",
 };
 
 export const ErrorFilledIconText = Template.bind({});
@@ -140,7 +140,7 @@ ErrorFilledIconText.args = {
   ariaText: "filled text input with error, icon, and text",
   error: true,
   defaultValue: "olivia@untitledui.com",
-  icon: "/icons/mail.svg",
+  icon: "/icons/mail-gray.svg",
 };
 
 export const ErrorIconDisabled = Template.bind({});
@@ -149,7 +149,7 @@ ErrorIconDisabled.args = {
   ariaText: "disabled text input with error and icon",
   error: true,
   disabled: true,
-  icon: "/icons/mail.svg",
+  icon: "/icons/mail-gray.svg",
 };
 
 export const ErrorEmptyMessage = Template.bind({});

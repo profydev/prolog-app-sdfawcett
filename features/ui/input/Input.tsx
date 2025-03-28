@@ -1,4 +1,5 @@
 import { DetailedHTMLProps, InputHTMLAttributes } from "react";
+import style from "./input.module.scss";
 
 interface InputProps {
   error?: boolean;
@@ -25,10 +26,14 @@ export const Input = ({
   ...inputProps
 }: InputAttributes & InputProps) => {
   return (
-    <label aria-label={!label ? ariaText : ""}>
+    <label
+      aria-label={!label ? ariaText : ""}
+      className={style.inputLabel}
+      data-disabled={inputProps.disabled}
+    >
       {label ? <span>{label}</span> : null}
 
-      <span>
+      <span className={style.inputBox}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         {icon ? <img src={icon} alt="" /> : null}
         <input {...inputProps} type="text" />

@@ -1,0 +1,49 @@
+@use "@styles/color";
+@use "@styles/space";
+@use "@styles/font";
+
+.inputLabel {
+  // remove default input styles
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+
+  // input box container
+  .inputBox {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    height: 2.75rem;
+    border: 1px solid color.$gray-300;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 #1018280d;
+    box-sizing: border-box;
+    padding: 0 space.$s4;
+
+    input {
+      width: 95%;
+      height: 90%;
+      color: color.$gray-900;
+      padding: 0;
+      outline: transparent;
+      border: none;
+      background-color: transparent;
+      box-sizing: border-box;
+
+      &::placeholder {
+        color: color.$gray-500;
+      }
+    }
+
+    &:focus-within {
+      box-shadow: 0 0 0 4px color.$primary-100;
+    }
+  }
+
+  &[data-disabled="true"] {
+    .inputBox {
+      background-color: color.$gray-100;
+    }
+  }
+}

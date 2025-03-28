@@ -22,7 +22,7 @@ const Template: StoryFn<typeof Input> = ({
   defaultValue,
   disabled,
 }) => (
-  <div style={{ padding: 50, width: "5rem" }}>
+  <div style={{ padding: 50, width: "320px" }}>
     <Input
       error={error}
       label={label}

@@ -14,3 +14,12 @@ export type Issue = {
   numEvents: number;
   numUsers: number;
 };
+
+export type Status = "resolved" | "open" | "";
+export type Level = "Error" | "Warning" | "Info" | "";
+export interface Query {
+  page: number;
+  status?: Status;
+  level?: Level;
+  search?: string;
+}

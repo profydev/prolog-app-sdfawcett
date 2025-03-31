@@ -30,6 +30,7 @@ export const Input = ({
       aria-label={!label ? ariaText : ""}
       className={style.inputLabel}
       data-disabled={inputProps.disabled}
+      data-error={error}
     >
       {label ? <span className={style.labelText}>{label}</span> : null}
 
@@ -37,12 +38,19 @@ export const Input = ({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         {icon ? <img src={icon} alt="" className={style.inputIcon} /> : null}
         <input {...inputProps} type="text" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        {error ? <img src="/icons/alert-circle.svg" alt="" /> : null}
+
+        {error ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src="/icons/alert-circle.svg"
+            alt=""
+            className={style.errorIcon}
+          />
+        ) : null}
       </span>
 
       {hint && <span className={style.hintText}>{hint}</span>}
-      {error && <span>{errorText}</span>}
+      {error && <span className={style.errorText}>{errorText}</span>}
     </label>
   );
 };

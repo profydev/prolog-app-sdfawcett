@@ -21,6 +21,12 @@
     margin-top: space.$s1;
   }
 
+  .errorText {
+    font: font.$text-sm-regular;
+    color: color.$error-500;
+    margin-top: space.$s1;
+  }
+
   // input box container
   .inputBox {
     display: inline-flex;
@@ -59,11 +65,32 @@
       aspect-ratio: 1/1;
       margin-right: space.$s2;
     }
+
+    .errorIcon {
+      width: 1rem;
+      aspect-ratio: 1/1;
+    }
   }
 
   &[data-disabled="true"] {
     .inputBox {
       background-color: color.$gray-100;
+    }
+  }
+
+  &[data-error="true"] {
+    .inputBox {
+      border: 1px solid color.$error-300;
+    }
+
+    .inputBox:focus-within {
+      box-shadow: 0 0 0 4px color.$error-100;
+    }
+
+    &[data-disabled="true"] {
+      .inputBox {
+        background-color: #fff;
+      }
     }
   }
 }

@@ -1,0 +1,96 @@
+@use "@styles/color";
+@use "@styles/space";
+@use "@styles/font";
+
+.inputLabel {
+  // remove default input styles
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+
+  .labelText {
+    font: font.$text-sm-semibold;
+    color: color.$gray-700;
+    margin-bottom: space.$s2;
+  }
+
+  .hintText {
+    font: font.$text-sm-regular;
+    color: color.$gray-500;
+    margin-top: space.$s1;
+  }
+
+  .errorText {
+    font: font.$text-sm-regular;
+    color: color.$error-500;
+    margin-top: space.$s1;
+  }
+
+  // input box container
+  .inputBox {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    height: 2.75rem;
+    border: 1px solid color.$gray-300;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 #1018280d;
+    box-sizing: border-box;
+    padding: 0 space.$s3;
+
+    input {
+      width: 95%;
+      height: 90%;
+      color: color.$gray-900;
+      padding: 0;
+      outline: transparent;
+      border: none;
+      background-color: transparent;
+      box-sizing: border-box;
+      font-family: inherit;
+
+      &::placeholder {
+        color: color.$gray-500;
+      }
+    }
+
+    &:focus-within {
+      box-shadow: 0 0 0 4px color.$primary-100;
+      border: 1px solid color.$primary-300;
+    }
+
+    .inputIcon {
+      width: 1.25rem;
+      aspect-ratio: 1/1;
+      margin-right: space.$s2;
+    }
+
+    .errorIcon {
+      width: 1rem;
+      aspect-ratio: 1/1;
+    }
+  }
+
+  &[data-disabled="true"] {
+    .inputBox {
+      background-color: color.$gray-100;
+    }
+  }
+
+  &[data-error="true"] {
+    .inputBox {
+      border: 1px solid color.$error-300;
+    }
+
+    .inputBox:focus-within {
+      box-shadow: 0 0 0 4px color.$error-100;
+    }
+
+    &[data-disabled="true"] {
+      .inputBox {
+        background-color: #fff;
+      }
+    }
+  }
+}

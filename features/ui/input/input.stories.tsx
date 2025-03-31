@@ -95,6 +95,15 @@ LabelEmptyIcon.args = {
   icon: "/icons/mail-gray.svg",
 };
 
+export const LabelEmptyIconDisabled = Template.bind({});
+LabelEmptyIconDisabled.args = {
+  placeholder: "olivia@untitledui.com",
+  ariaText: "empty text input with label, icon, and disabled",
+  label: "Email",
+  disabled: true,
+  icon: "/icons/mail-gray.svg",
+};
+
 export const HintEmptyIcon = Template.bind({});
 HintEmptyIcon.args = {
   placeholder: "olivia@untitled.com",

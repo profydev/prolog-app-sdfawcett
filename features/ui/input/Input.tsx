@@ -31,7 +31,7 @@ export const Input = ({
       className={style.inputLabel}
       data-disabled={inputProps.disabled}
     >
-      {label ? <span>{label}</span> : null}
+      {label ? <span className={style.labelText}>{label}</span> : null}
 
       <span className={style.inputBox}>
         {/* eslint-disable-next-line @next/next/no-img-element */}

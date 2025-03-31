@@ -41,8 +41,8 @@ export const Input = ({
         {error ? <img src="/icons/alert-circle.svg" alt="" /> : null}
       </span>
 
-      {hint && <p>{hint}</p>}
-      {error && <p>{errorText}</p>}
+      {hint && <span className={style.hintText}>{hint}</span>}
+      {error && <span>{errorText}</span>}
     </label>
   );
 };

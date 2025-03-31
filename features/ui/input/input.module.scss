@@ -15,6 +15,12 @@
     margin-bottom: space.$s2;
   }
 
+  .hintText {
+    font: font.$text-sm-regular;
+    color: color.$gray-500;
+    margin-top: space.$s1;
+  }
+
   // input box container
   .inputBox {
     display: inline-flex;

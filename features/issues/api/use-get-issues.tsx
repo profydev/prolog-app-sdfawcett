@@ -14,10 +14,15 @@ export function getQueryKey(page?: number) {
   return [QUERY_KEY, page];
 }
 
-export function useGetIssues(page: number, status: Status, level: Level) {
+export function useGetIssues(
+  page: number,
+  status: Status,
+  level: Level,
+  search: string,
+) {
   const query = useQuery<Page<Issue>, Error>(
     getQueryKey(page),
-    ({ signal }) => getIssues(page, status, level, { signal }),
+    ({ signal }) => getIssues(page, status, level, search, { signal }),
     { keepPreviousData: true },
   );
 
@@ -26,9 +31,9 @@ export function useGetIssues(page: number, status: Status, level: Level) {
   useEffect(() => {
     if (query.data?.meta.hasNextPage) {
       queryClient.prefetchQuery(getQueryKey(page + 1), ({ signal }) =>
-        getIssues(page + 1, status, level, { signal }),
+        getIssues(page + 1, status, level, search, { signal }),
       );
     }
-  }, [query.data, page, status, level, queryClient]);
+  }, [query.data, page, status, level, search, queryClient]);
   return query;
 }

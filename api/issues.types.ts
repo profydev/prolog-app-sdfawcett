@@ -21,5 +21,5 @@ export interface Query {
   page: number;
   status?: Status;
   level?: Level;
-  search?: string;
+  project?: string;
 }

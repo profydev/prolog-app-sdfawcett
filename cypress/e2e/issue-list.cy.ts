@@ -91,3 +91,102 @@ describe("Issue List", () => {
     });
   });
 });
+
+// Issue filters tests
+describe("Issue list filter, status", () => {
+  beforeEach(() => {
+    // setup request mocks
+    cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+      fixture: "projects.json",
+    }).as("getProjects");
+    cy.intercept("GET", "https://prolog-api.profy.dev/issue?page=1", {
+      fixture: "issues-page-1.json",
+    }).as("getIssuesPage1");
+    cy.intercept("GET", "https://prolog-api.profy.dev/issue?page=2", {
+      fixture: "issues-page-2.json",
+    }).as("getIssuesPage2");
+
+    // request mocks for open filter
+    cy.intercept("GET", "https://prolog-api.profy.dev/issue?page=1&open=true", {
+      fixture: "status/issues-open-page-1.json",
+    }).as("getIssuesPage1Open");
+    cy.intercept("GET", "https://prolog-api.profy.dev/issue?page=2&open=true", {
+      fixture: "status/issues-open-page-2.json",
+    }).as("getIssuesPage2Open");
+    cy.intercept("GET", "https://prolog-api.profy.dev/issue?page=3&open=true", {
+      fixture: "status/issues-open-page-3.json",
+    }).as("getIssuesPage3Open");
+
+    // request mocks for resolved filter
+    cy.intercept(
+      "GET",
+      "https://prolog-api.profy.dev/issue?page=1&resolved=true",
+      {
+        fixture: "status/issues-resolved-page-1.json",
+      },
+    ).as("getIssuesPage1Resolved");
+
+    // open issues page
+    cy.visit(`http://localhost:3000/dashboard/issues`);
+
+    // wait for request to resolve
+    cy.wait(["@getProjects", "@getIssuesPage1"]);
+    cy.wait(500);
+
+    // set button aliases
+    cy.get("button").contains("Previous").as("prev-button");
+    cy.get("button").contains("Next").as("next-button");
+
+    // set filter options
+    cy.get('[data-cy="issueStatusFilter"]').as("issueStatusFilter");
+    cy.get('[data-cy="issueLevelFilter"]').as("issueLevelFilter");
+    cy.get('[data-cy="issueProjectNameFilter"]').as("issueProjectNameFilter");
+  });
+
+  context("desktop resolution", () => {
+    beforeEach(() => {
+      cy.viewport(1025, 900);
+    });
+
+    it('filters the issue list by "open"', () => {
+      // open the select option,
+      cy.get("@issueStatusFilter").select("open");
+
+      // wait for request to resolve
+      cy.wait(["@getProjects", "@getIssuesPage1Open"]);
+
+      // check page 1
+      cy.contains("Page 1 of 3");
+      cy.get("@prev-button").should("have.attr", "disabled");
+      cy.get("tbody tr").should("have.length", 10);
+      cy.get("@next-button").click();
+
+      // check page 2
+      cy.wait(["@getProjects", "@getIssuesPage2Open"]);
+      cy.contains("Page 2 of 3");
+      cy.get("@prev-button").should("not.have.attr", "disabled");
+      cy.get("tbody tr").should("have.length", 10);
+      cy.get("@next-button").click();
+
+      // check page 3
+      cy.wait(["@getProjects", "@getIssuesPage3Open"]);
+      cy.contains("Page 3 of 3");
+      cy.get("@next-button").should("have.attr", "disabled");
+      cy.get("tbody tr").should("have.length", 2);
+    });
+
+    it('filter issue list by "resolved', () => {
+      // open the select option,
+      cy.get("@issueStatusFilter").select("resolved");
+
+      // wait for request to resolve
+      cy.wait(["@getProjects", "@getIssuesPage1Resolved"]);
+
+      // check page 1
+      cy.contains("Page 1 of 1");
+      cy.get("@prev-button").should("have.attr", "disabled");
+      cy.get("@next-button").should("not.have.attr", "disabled");
+      cy.get("tbody tr").should("have.length", 6);
+    });
+  });
+});

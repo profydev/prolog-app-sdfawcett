@@ -7,11 +7,20 @@ import type { Status } from "@api/issues.types";
 
 const QUERY_KEY = "issues";
 
-export function getQueryKey(page?: number) {
-  if (page === undefined) {
-    return [QUERY_KEY];
-  }
-  return [QUERY_KEY, page];
+export function getQueryKey(
+  page?: number,
+  status?: string,
+  level?: string,
+  name?: string,
+) {
+  const queryKey: Array<string | number> = [QUERY_KEY];
+
+  if (page) queryKey.push(page);
+  if (status) queryKey.push(status);
+  if (level) queryKey.push(level);
+  if (name) queryKey.push(name);
+
+  return queryKey;
 }
 
 export function useGetIssues(
@@ -30,8 +39,9 @@ export function useGetIssues(
   const queryClient = useQueryClient();
   useEffect(() => {
     if (query.data?.meta.hasNextPage) {
-      queryClient.prefetchQuery(getQueryKey(page + 1), ({ signal }) =>
-        getIssues(page + 1, status, level, search, { signal }),
+      queryClient.prefetchQuery(
+        getQueryKey(page + 1, status, level, search),
+        ({ signal }) => getIssues(page + 1, status, level, search, { signal }),
       );
     }
   }, [query.data, page, status, level, search, queryClient]);

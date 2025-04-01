@@ -1,5 +1,5 @@
 import { axios } from "./axios";
-import type { Issue } from "./issues.types";
+import type { Issue, Level } from "./issues.types";
 import type { Page } from "@typings/page.types";
 import type { Status } from "@api/issues.types";
 
@@ -8,10 +8,11 @@ const ENDPOINT = "/issue";
 export async function getIssues(
   page: number,
   status: Status,
+  level: Level,
   options?: { signal?: AbortSignal },
 ) {
   const { data } = await axios.get<Page<Issue>>(ENDPOINT, {
-    params: { page, status },
+    params: { page, status, level },
     signal: options?.signal,
   });
   return data;

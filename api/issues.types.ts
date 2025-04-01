@@ -16,7 +16,7 @@ export type Issue = {
 };
 
 export type Status = "resolved" | "open" | "";
-export type Level = "Error" | "Warning" | "Info" | "";
+export type Level = "error" | "warning" | "info" | "";
 export interface Query {
   page: number;
   status?: Status;

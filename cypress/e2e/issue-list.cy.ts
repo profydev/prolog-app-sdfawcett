@@ -139,8 +139,6 @@ describe("Issue list filter, status", () => {
 
     // set filter options
     cy.get('[data-cy="issueStatusFilter"]').as("issueStatusFilter");
-    cy.get('[data-cy="issueLevelFilter"]').as("issueLevelFilter");
-    cy.get('[data-cy="issueProjectNameFilter"]').as("issueProjectNameFilter");
   });
 
   context("desktop resolution", () => {

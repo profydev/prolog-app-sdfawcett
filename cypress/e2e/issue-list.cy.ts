@@ -190,3 +190,131 @@ describe("Issue list filter, status", () => {
     });
   });
 });
+
+describe("Issue list filter, level", () => {
+  beforeEach(() => {
+    cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+      fixture: "projects.json",
+    }).as("getProjects");
+    cy.intercept("GET", "https://prolog-api.profy.dev/issue?page=1", {
+      fixture: "issues-page-1.json",
+    }).as("getIssuesPage1");
+    cy.intercept("GET", "https://prolog-api.profy.dev/issue?page=2", {
+      fixture: "issues-page-2.json",
+    }).as("getIssuesPage2");
+
+    // request mocks for the error filter
+    cy.intercept(
+      "GET",
+      "https://prolog-api.profy.dev/issue?page=1&level=error",
+      {
+        fixture: "level/issues-error-page-1.json",
+      },
+    ).as("getIssuesPage1Error");
+    cy.intercept(
+      "GET",
+      "https://prolog-api.profy.dev/issue?page=2&level=error",
+      {
+        fixture: "level/issues-error-page-2.json",
+      },
+    ).as("getIssuesPage2Error");
+
+    // request mocks for the warning filter
+    cy.intercept(
+      "GET",
+      "https://prolog-api.profy.dev/issue?page=1&level=warning",
+      {
+        fixture: "level/issues-warning-page-1.json",
+      },
+    ).as("getIssuesPage1Warning");
+    cy.intercept(
+      "GET",
+      "https://prolog-api.profy.dev/issue?page=2&level=warning",
+      {
+        fixture: "level/issues-warning-page-2.json",
+      },
+    ).as("getIssuesPage2Warning");
+
+    // request mocks for the 'info' filter
+    cy.intercept(
+      "GET",
+      "https://prolog-api.profy.dev/issue?page=1&level=info",
+      {
+        fixture: "level/issues-info-page-1.json",
+      },
+    ).as("getIssuesPage1Info");
+
+    // open issues page
+    cy.visit(`http://localhost:3000/dashboard/issues`);
+
+    // wait for request to resolve
+    cy.wait(["@getProjects", "@getIssuesPage1"]);
+    cy.wait(500);
+
+    // set button aliases
+    cy.get("button").contains("Previous").as("prev-button");
+    cy.get("button").contains("Next").as("next-button");
+
+    // grab filter option
+    cy.get('[data-cy="issueLevelFilter"]').as("issueLevelFilter");
+  });
+
+  context("desktop resolution", () => {
+    beforeEach(() => {
+      cy.viewport(1025, 900);
+    });
+
+    it('filters the issue list by "error"', () => {
+      cy.get("@issueLevelFilter").select("error");
+
+      // wait for request to resolve
+      cy.wait(["@getProjects", "@getIssuesPage1Error"]);
+
+      // check page 1
+      cy.contains("Page 1 of 2");
+      cy.get("@prev-button").should("have.attr", "disabled");
+      cy.get("tbody tr").should("have.length", 10);
+      cy.get("@next-button").click();
+
+      // check page 2
+      cy.wait(["@getProjects", "@getIssuesPage2Error"]);
+      cy.contains("Page 2 of 2");
+      cy.get("@prev-button").should("not.have.attr", "disabled");
+      cy.get("tbody tr").should("have.length", 2);
+      cy.get("@next-button").should("have.attr", "disabled");
+    });
+
+    it('filters the issue list by "warning"', () => {
+      cy.get("@issueLevelFilter").select("warning");
+
+      // wait for request to resolve
+      cy.wait(["@getProjects", "@getIssuesPage1Warning"]);
+
+      // check page 1
+      cy.contains("Page 1 of 2");
+      cy.get("@prev-button").should("have.attr", "disabled");
+      cy.get("tbody tr").should("have.length", 10);
+      cy.get("@next-button").click();
+
+      // check page 2
+      cy.wait(["@getProjects", "@getIssuesPage2Warning"]);
+      cy.contains("Page 2 of 2");
+      cy.get("@prev-button").should("not.have.attr", "disabled");
+      cy.get("tbody tr").should("have.length", 2);
+      cy.get("@next-button").should("have.attr", "disabled");
+    });
+
+    it('filters the issue list by "info"', () => {
+      cy.get("@issueLevelFilter").select("info");
+
+      // wait for request to resolve
+      cy.wait(["@getProjects", "@getIssuesPage1Info"]);
+
+      // check page 1
+      cy.contains("Page 1 of 1");
+      cy.get("@prev-button").should("have.attr", "disabled");
+      cy.get("tbody tr").should("have.length", 4);
+      cy.get("@next-button").should("have.attr", "disabled");
+    });
+  });
+});

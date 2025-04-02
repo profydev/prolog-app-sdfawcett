@@ -316,3 +316,178 @@ describe("Issue list filter, level", () => {
     });
   });
 });
+
+describe('Issue list filter, "search"', () => {
+  beforeEach(() => {
+    // setup request mocks
+    cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+      fixture: "projects.json",
+    }).as("getProjects");
+    cy.intercept("GET", "https://prolog-api.profy.dev/issue?page=1", {
+      fixture: "issues-page-1.json",
+    }).as("getIssuesPage1");
+    cy.intercept("GET", "https://prolog-api.profy.dev/issue?page=2", {
+      fixture: "issues-page-2.json",
+    }).as("getIssuesPage2");
+
+    // request mocks for the 'project' filter
+    cy.intercept(
+      "GET",
+      "https://prolog-api.profy.dev/issue?page=1&project=backend",
+      {
+        fixture: "search/issues-backend-page-1.json",
+      },
+    ).as("getIssuesPage1Project");
+
+    // open issues page
+    cy.visit(`http://localhost:3000/dashboard/issues`);
+
+    // wait for request to resolve
+    cy.wait(["@getProjects", "@getIssuesPage1"]);
+    cy.wait(500);
+
+    // set button aliases
+    cy.get("button").contains("Previous").as("prev-button");
+    cy.get("button").contains("Next").as("next-button");
+
+    // set filter option
+    cy.get('[data-cy="issueProjectNameFilter"]').as("issueProjectNameFilter");
+  });
+
+  context("desktop resolution", () => {
+    beforeEach(() => {
+      cy.viewport(1025, 900);
+    });
+
+    it('filters the issue list by "project"', () => {
+      cy.get("@issueProjectNameFilter").select("backend");
+
+      // wait for request to resolve
+      cy.wait(["@getProjects", "@getIssuesPage1Project"]);
+
+      // check page 1
+      cy.contains("Page 1 of 1");
+      cy.get("@prev-button").should("have.attr", "disabled");
+      cy.get("tbody tr").should("have.length", 5);
+      cy.get("@next-button").should("have.attr", "disabled");
+    });
+  });
+});
+
+describe('Issue list filter, "level" and "status"', () => {
+  beforeEach(() => {
+    cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+      fixture: "projects.json",
+    }).as("getProjects");
+    cy.intercept("GET", "https://prolog-api.profy.dev/issue?page=1", {
+      fixture: "issues-page-1.json",
+    }).as("getIssuesPage1");
+    cy.intercept("GET", "https://prolog-api.profy.dev/issue?page=2", {
+      fixture: "issues-page-2.json",
+    }).as("getIssuesPage2");
+
+    // request mock for level "error" and status "open"
+    cy.intercept(
+      "GET",
+      "https://prolog-api.profy.dev/issue?page=1&status=open&level=error",
+      {
+        fixture: "level-status/issues-error-open-page-1.json",
+      },
+    ).as("getIssuesPage1ErrorOpen");
+
+    cy.visit(`http://localhost:3000/dashboard/issues`);
+
+    // wait for request to resolve
+    cy.wait(["@getProjects", "@getIssuesPage1"]);
+    cy.wait(500);
+
+    // set button aliases
+    cy.get("button").contains("Previous").as("prev-button");
+    cy.get("button").contains("Next").as("next-button");
+
+    // grab filter option
+    cy.get('[data-cy="issueStatusFilter"]').as("issueStatusFilter");
+    cy.get('[data-cy="issueLevelFilter"]').as("issueLevelFilter");
+  });
+
+  context("desktop resolution", () => {
+    beforeEach(() => {
+      cy.viewport(1025, 900);
+    });
+
+    it('filters the issue list by "error" and "open"', () => {
+      // select "error" from the level filter
+      cy.get("@issueLevelFilter").select("error");
+      cy.get("@issueStatusFilter").select("open");
+
+      // wait for request to resolve
+      cy.wait(["@getProjects", "@getIssuesPage1ErrorOpen"]);
+
+      // check page 1
+      cy.contains("Page 1 of 1");
+      cy.get("@prev-button").should("have.attr", "disabled");
+      cy.get("tbody tr").should("have.length", 8);
+      cy.get("@next-button").should("have.attr", "disabled");
+    });
+  });
+});
+
+describe('Issue list filter, "level", "status" and "project"', () => {
+  beforeEach(() => {
+    cy.intercept("GET", "https://prolog-api.profy.dev/project", {
+      fixture: "projects.json",
+    }).as("getProjects");
+    cy.intercept("GET", "https://prolog-api.profy.dev/issue?page=1", {
+      fixture: "issues-page-1.json",
+    }).as("getIssuesPage1");
+    cy.intercept("GET", "https://prolog-api.profy.dev/issue?page=2", {
+      fixture: "issues-page-2.json",
+    }).as("getIssuesPage2");
+
+    // request mock for level "error", status "open" and project "backend"
+    cy.intercept(
+      "GET",
+      "https://prolog-api.profy.dev/issue?page=1&status=open&level=error&project=backend",
+      {
+        fixture: "level-status-project/issues-error-open-backend-page-1.json",
+      },
+    ).as("getIssuesPage1ErrorOpenBackend");
+
+    cy.visit(`http://localhost:3000/dashboard/issues`);
+
+    // wait for request to resolve
+    cy.wait(["@getProjects", "@getIssuesPage1"]);
+    cy.wait(500);
+
+    // set button aliases
+    cy.get("button").contains("Previous").as("prev-button");
+    cy.get("button").contains("Next").as("next-button");
+
+    // grab filter option
+    cy.get('[data-cy="issueStatusFilter"]').as("issueStatusFilter");
+    cy.get('[data-cy="issueLevelFilter"]').as("issueLevelFilter");
+    cy.get('[data-cy="issueProjectNameFilter"]').as("issueProjectNameFilter");
+  });
+
+  context("desktop resolution", () => {
+    beforeEach(() => {
+      cy.viewport(1025, 900);
+    });
+
+    it('filters the issue list by "error", "open" and "backend"', () => {
+      // select "error" from the level filter
+      cy.get("@issueLevelFilter").select("error");
+      cy.get("@issueStatusFilter").select("open");
+      cy.get("@issueProjectNameFilter").select("backend");
+
+      // wait for request to resolve
+      cy.wait(["@getProjects", "@getIssuesPage1ErrorOpenBackend"]);
+
+      // check page 1
+      cy.contains("Page 1 of 1");
+      cy.get("tbody tr").should("have.length", 8);
+      cy.get("@prev-button").should("have.attr");
+      cy.get("@next-button").should("have.attr", "disabled");
+    });
+  });
+});

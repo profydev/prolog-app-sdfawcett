@@ -30,7 +30,7 @@ export function useGetIssues(
   search: string,
 ) {
   const query = useQuery<Page<Issue>, Error>(
-    getQueryKey(page),
+    getQueryKey(page, status, level, search),
     ({ signal }) => getIssues(page, status, level, search, { signal }),
     { keepPreviousData: true },
   );

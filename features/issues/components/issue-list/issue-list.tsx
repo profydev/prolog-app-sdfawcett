@@ -1,21 +1,24 @@
-import { useRouter } from "next/router";
+import type { Level, Query, Status } from "@api/issues.types";
 import { ProjectLanguage } from "@api/projects.types";
 import { useGetProjects } from "@features/projects";
+import { useRouter } from "next/router";
 import { useGetIssues } from "../../api/use-get-issues";
-import { IssueRow } from "./issue-row";
+import { Filter } from "../filter";
+import { useFilter } from "../context/filter-context";
 import styles from "./issue-list.module.scss";
-import { LoadingAnimation } from "features/ui/loading-animation";
-import { useState } from "react";
-import type { Status, Query, Level } from "@api/issues.types";
+import { IssueRow } from "./issue-row";
 
 export function IssueList() {
-  const [status] = useState<Status>("");
-  const [level] = useState<Level>("");
-  const [projectName] = useState<string>("");
-
+  const { status, level, projectName } = useFilter();
   const router = useRouter();
+
   const page = Number(router.query.page || 1);
-  const navigateToPage = (newPage: number) => {
+  const navigateToPage = (
+    newPage: number,
+    status: Status,
+    level: Level,
+    projectName: string,
+  ) => {
     const query: Query = { page: newPage };
     if (status) query.status = status;
     if (level) query.level = level;
@@ -31,11 +34,7 @@ export function IssueList() {
   const projects = useGetProjects();
 
   if (projects.isLoading || issuesPage.isLoading) {
-    return (
-      <div className={styles.loadingContainer}>
-        <LoadingAnimation />
-      </div>
-    );
+    return <div>Loading</div>;
   }
 
   if (projects.isError) {
@@ -59,6 +58,7 @@ export function IssueList() {
 
   return (
     <div className={styles.container}>
+      <Filter navigateToPage={navigateToPage} />
       <table className={styles.table}>
         <thead>
           <tr className={styles.headerRow}>
@@ -82,14 +82,14 @@ export function IssueList() {
         <div>
           <button
             className={styles.paginationButton}
-            onClick={() => navigateToPage(page - 1)}
+            onClick={() => navigateToPage(page - 1, status, level, projectName)}
             disabled={page === 1}
           >
             Previous
           </button>
           <button
             className={styles.paginationButton}
-            onClick={() => navigateToPage(page + 1)}
+            onClick={() => navigateToPage(page + 1, status, level, projectName)}
             disabled={page === meta?.totalPages}
           >
             Next

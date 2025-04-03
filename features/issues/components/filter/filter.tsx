@@ -1,5 +1,6 @@
 import { Level, Status } from "@api/issues.types";
 import { useFilter } from "../context/filter-context";
+import { useEffect, useState } from "react";
 
 interface FilterProps {
   navigateToPage: (
@@ -11,8 +12,13 @@ interface FilterProps {
 }
 
 export function Filter({ navigateToPage }: FilterProps) {
+  const [name, setName] = useState("");
   const { setStatus, setLevel, setProjectName, status, level, projectName } =
     useFilter();
+
+  useEffect(() => {
+    if (projectName === "") setName("");
+  }, [projectName]);
   return (
     <div>
       <label aria-label="Filter status by 'unresolved' or 'resolved'">
@@ -22,7 +28,7 @@ export function Filter({ navigateToPage }: FilterProps) {
             if (setStatus) setStatus(status);
             navigateToPage(1, status, level, projectName);
           }}
-          defaultValue={""}
+          value={status}
         >
           <option value="">--</option>
           <option value="open">Unresolved</option>
@@ -37,7 +43,7 @@ export function Filter({ navigateToPage }: FilterProps) {
             if (setLevel) setLevel(level);
             navigateToPage(1, status, level, projectName);
           }}
-          defaultValue={""}
+          value={level}
         >
           <option value="">--</option>
           <option value="error">Error</option>
@@ -54,6 +60,8 @@ export function Filter({ navigateToPage }: FilterProps) {
             if (setProjectName) setProjectName(projectName);
             navigateToPage(1, status, level, projectName);
           }}
+          onChange={(e) => setName(e.target.value)}
+          value={name}
         />
       </label>
     </div>

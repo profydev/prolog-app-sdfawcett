@@ -7,6 +7,7 @@ import { Filter } from "../filter";
 import { useFilter } from "../context/filter-context";
 import styles from "./issue-list.module.scss";
 import { IssueRow } from "./issue-row";
+import { NoIssues } from "../no-issues/NoIssues";
 
 export function IssueList() {
   const { status, level, projectName } = useFilter();
@@ -55,6 +56,15 @@ export function IssueList() {
     {} as Record<string, ProjectLanguage>,
   );
   const { items, meta } = issuesPage.data || {};
+
+  if (items.length === 0) {
+    return (
+      <div className={styles.errorContainer}>
+        <Filter navigateToPage={navigateToPage} />
+        <NoIssues navigateToPage={navigateToPage} />
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>

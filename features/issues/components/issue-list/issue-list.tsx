@@ -8,10 +8,24 @@ import { useFilter } from "../context/filter-context";
 import styles from "./issue-list.module.scss";
 import { IssueRow } from "./issue-row";
 import { NoIssues } from "../no-issues/NoIssues";
+import { useEffect } from "react";
 
 export function IssueList() {
-  const { status, level, projectName } = useFilter();
+  const { status, level, projectName, setLevel, setStatus, setProjectName } =
+    useFilter();
   const router = useRouter();
+
+  useEffect(() => {
+    const routerQuery = router.query;
+    const status = routerQuery.status ? (routerQuery.status as Status) : "";
+    const level = routerQuery.level ? (routerQuery.level as Level) : "";
+    const projectName = routerQuery.project
+      ? (routerQuery.project as string)
+      : "";
+    if (setStatus) setStatus(status);
+    if (setLevel) setLevel(level);
+    if (setProjectName) setProjectName(projectName);
+  }, [router, setStatus, setLevel, setProjectName]);
 
   const page = Number(router.query.page || 1);
   const navigateToPage = (

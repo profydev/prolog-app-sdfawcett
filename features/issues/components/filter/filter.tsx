@@ -20,7 +20,17 @@ export function Filter({ navigateToPage }: FilterProps) {
     if (projectName === "") setName("");
   }, [projectName]);
   return (
-    <div>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (setStatus && setLevel && setProjectName) {
+          setStatus(status);
+          setLevel(level);
+          setProjectName(projectName);
+        }
+        navigateToPage(1, status, level, name);
+      }}
+    >
       <label aria-label="Filter status by 'unresolved' or 'resolved'">
         <select
           onChange={(e) => {
@@ -64,6 +74,6 @@ export function Filter({ navigateToPage }: FilterProps) {
           value={name}
         />
       </label>
-    </div>
+    </form>
   );
 }

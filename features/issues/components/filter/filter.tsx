@@ -12,9 +12,9 @@ interface FilterProps {
 }
 
 export function Filter({ navigateToPage }: FilterProps) {
-  const [name, setName] = useState("");
   const { setStatus, setLevel, setProjectName, status, level, projectName } =
     useFilter();
+  const [name, setName] = useState(projectName);
 
   useEffect(() => {
     if (projectName === "") setName("");
@@ -25,6 +25,10 @@ export function Filter({ navigateToPage }: FilterProps) {
         <select
           onChange={(e) => {
             const status = e.target.value as Status;
+            localStorage.setItem(
+              "filterOptions",
+              JSON.stringify({ status, level, projectName }),
+            );
             if (setStatus) setStatus(status);
             navigateToPage(1, status, level, projectName);
           }}
@@ -40,6 +44,10 @@ export function Filter({ navigateToPage }: FilterProps) {
         <select
           onChange={(e) => {
             const level = e.target.value as Level;
+            localStorage.setItem(
+              "filterOptions",
+              JSON.stringify({ status, level, projectName }),
+            );
             if (setLevel) setLevel(level);
             navigateToPage(1, status, level, projectName);
           }}
@@ -57,6 +65,10 @@ export function Filter({ navigateToPage }: FilterProps) {
           maxLength={25}
           onBlur={(e) => {
             const projectName = e.target.value;
+            localStorage.setItem(
+              "filterOptions",
+              JSON.stringify({ status, level, projectName }),
+            );
             if (setProjectName) setProjectName(projectName);
             navigateToPage(1, status, level, projectName);
           }}

@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import type { Status, Level } from "@api/issues.types";
 
 interface FilterContextProps {
@@ -31,6 +31,16 @@ export const FilterContextProvider = ({
   const [status, setStatus] = useState<Status>("");
   const [level, setLevel] = useState<Level>("");
   const [projectName, setProjectName] = useState<string>("");
+
+  useEffect(() => {
+    const filterOptions = localStorage.getItem("filterOptions");
+    if (filterOptions) {
+      const { status, level, projectName } = JSON.parse(filterOptions);
+      setStatus(status);
+      setLevel(level);
+      setProjectName(projectName);
+    }
+  }, []);
 
   return (
     <FilterActionContext.Provider

@@ -71,7 +71,7 @@ export function IssueList() {
   );
   const { items, meta } = issuesPage.data || {};
 
-  if (items.length === 0) {
+  if (items && items.length === 0) {
     return (
       <div className={styles.errorContainer}>
         <Filter navigateToPage={navigateToPage} />

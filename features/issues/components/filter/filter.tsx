@@ -39,6 +39,7 @@ export function Filter({ navigateToPage }: FilterProps) {
             navigateToPage(1, status, level, projectName);
           }}
           value={status}
+          data-cy="issueStatusFilter"
         >
           <option value="">--</option>
           <option value="open">Unresolved</option>
@@ -54,6 +55,7 @@ export function Filter({ navigateToPage }: FilterProps) {
             navigateToPage(1, status, level, projectName);
           }}
           value={level}
+          data-cy="issueLevelFilter"
         >
           <option value="">--</option>
           <option value="error">Error</option>
@@ -72,6 +74,7 @@ export function Filter({ navigateToPage }: FilterProps) {
           }}
           onChange={(e) => setName(e.target.value)}
           value={name}
+          data-cy="issueProjectNameFilter"
         />
       </label>
     </form>

@@ -1,6 +1,7 @@
 import { Level, Status } from "@api/issues.types";
 import { useFilter } from "../context/filter-context";
 import { useEffect, useState } from "react";
+import styles from "./filter.module.scss";
 
 interface FilterProps {
   navigateToPage: (
@@ -21,6 +22,7 @@ export function Filter({ navigateToPage }: FilterProps) {
   }, [projectName]);
   return (
     <form
+      className={styles.filter}
       onSubmit={(e) => {
         e.preventDefault();
         if (setStatus && setLevel && setProjectName) {

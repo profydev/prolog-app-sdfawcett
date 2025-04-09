@@ -71,59 +71,63 @@ export function IssueList() {
   );
   const { items, meta } = issuesPage.data || {};
 
-  if (items && items.length === 0) {
-    return (
-      <div className={styles.errorContainer}>
-        <Filter navigateToPage={navigateToPage} />
-        <NoIssues navigateToPage={navigateToPage} />
-      </div>
-    );
-  }
-
   return (
-    <div className={styles.container}>
-      <Filter navigateToPage={navigateToPage} />
-      <table className={styles.table}>
-        <thead>
-          <tr className={styles.headerRow}>
-            <th className={styles.headerCell}>Issue</th>
-            <th className={styles.headerCell}>Level</th>
-            <th className={styles.headerCell}>Events</th>
-            <th className={styles.headerCell}>Users</th>
-          </tr>
-        </thead>
-        <tbody>
-          {(items || []).map((issue) => (
-            <IssueRow
-              key={issue.id}
-              issue={issue}
-              projectLanguage={projectIdToLanguage[issue.projectId]}
-            />
-          ))}
-        </tbody>
-      </table>
-      <div className={styles.paginationContainer}>
-        <div>
-          <button
-            className={styles.paginationButton}
-            onClick={() => navigateToPage(page - 1, status, level, projectName)}
-            disabled={page === 1}
-          >
-            Previous
-          </button>
-          <button
-            className={styles.paginationButton}
-            onClick={() => navigateToPage(page + 1, status, level, projectName)}
-            disabled={page === meta?.totalPages}
-          >
-            Next
-          </button>
-        </div>
-        <div className={styles.pageInfo}>
-          Page <span className={styles.pageNumber}>{meta?.currentPage}</span> of{" "}
-          <span className={styles.pageNumber}>{meta?.totalPages}</span>
-        </div>
+    <div>
+      <div className={styles.issueOptions}>
+        <Filter navigateToPage={navigateToPage} />
       </div>
+      {items && items.length === 0 ? (
+        <NoIssues navigateToPage={navigateToPage} />
+      ) : (
+        <div className={styles.container}>
+          <table className={styles.table}>
+            <thead>
+              <tr className={styles.headerRow}>
+                <th className={styles.headerCell}>Issue</th>
+                <th className={styles.headerCell}>Level</th>
+                <th className={styles.headerCell}>Events</th>
+                <th className={styles.headerCell}>Users</th>
+              </tr>
+            </thead>
+            <tbody>
+              {(items || []).map((issue) => (
+                <IssueRow
+                  key={issue.id}
+                  issue={issue}
+                  projectLanguage={projectIdToLanguage[issue.projectId]}
+                />
+              ))}
+            </tbody>
+          </table>
+          <div className={styles.paginationContainer}>
+            <div>
+              <button
+                className={styles.paginationButton}
+                onClick={() =>
+                  navigateToPage(page - 1, status, level, projectName)
+                }
+                disabled={page === 1}
+              >
+                Previous
+              </button>
+              <button
+                className={styles.paginationButton}
+                onClick={() =>
+                  navigateToPage(page + 1, status, level, projectName)
+                }
+                disabled={page === meta?.totalPages}
+              >
+                Next
+              </button>
+            </div>
+            <div className={styles.pageInfo}>
+              Page{" "}
+              <span className={styles.pageNumber}>{meta?.currentPage}</span> of{" "}
+              <span className={styles.pageNumber}>{meta?.totalPages}</span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

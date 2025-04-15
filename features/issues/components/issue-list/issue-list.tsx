@@ -77,7 +77,9 @@ export function IssueList() {
         <Filter navigateToPage={navigateToPage} />
       </div>
       {items && items.length === 0 ? (
-        <NoIssues navigateToPage={navigateToPage} />
+        <div className={styles.noIssuesContainer}>
+          <NoIssues navigateToPage={navigateToPage} />
+        </div>
       ) : (
         <div className={styles.container}>
           <table className={styles.table}>

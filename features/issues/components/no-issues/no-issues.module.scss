@@ -1,0 +1,28 @@
+@use "@styles/color";
+@use "@styles/space";
+@use "@styles/font";
+
+.noIssues {
+  width: min(100%, 352px);
+  text-align: center;
+  margin: 0 auto;
+  margin-block-start: 5.5rem;
+  padding-bottom: 5em;
+}
+
+.noIssues h2 {
+  color: color.$gray-900;
+  font: font.$text-md-medium;
+  margin-block-start: 0.7rem;
+}
+
+.noIssues p {
+  color: color.$gray-500;
+  font: font.$text-sm-regular;
+  margin-block-start: -0.6rem;
+}
+
+.noIssues button {
+  width: 100%;
+  margin-block-start: 0.6rem;
+}

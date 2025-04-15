@@ -24,5 +24,15 @@
 
 .noIssues button {
   width: 100%;
-  margin-block-start: 0.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.85rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 8px;
+  background-color: #7f56d9;
+  color: #fff;
+  text-decoration: none;
 }

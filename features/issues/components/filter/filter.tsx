@@ -79,11 +79,6 @@ export function Filter({ navigateToPage }: FilterProps) {
         <input
           type="text"
           maxLength={25}
-          onBlur={(e) => {
-            const projectName = e.target.value;
-            if (setProjectName) setProjectName(projectName);
-            navigateToPage(1, status, level, projectName);
-          }}
           onChange={(e) => setName(e.target.value)}
           value={name}
           data-cy="issueProjectNameFilter"

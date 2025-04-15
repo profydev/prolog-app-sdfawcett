@@ -31,7 +31,6 @@ export function NoIssues({ navigateToPage }: NoIssuesProps) {
           if (setStatus) setStatus("");
           if (setLevel) setLevel("");
           if (setProjectName) setProjectName("");
-          localStorage.removeItem("filterOptions");
           navigateToPage(1, "", "", "");
         }}
       >

@@ -114,7 +114,7 @@
    "meta": {
      "currentPage": 1,
      "limit": 10,
-     "totalItems":22,
+     "totalItems": 22,
      "totalPages": 3,
      "hasPreviousPage": false,
      "hasNextPage": true

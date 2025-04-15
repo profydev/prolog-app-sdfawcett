@@ -1,0 +1,97 @@
+@use "@styles/color";
+@use "@styles/space";
+@use "@styles/font";
+@use "@styles/breakpoint";
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: space.$s4;
+
+  @media screen and (min-width: breakpoint.$tablet) {
+    flex-direction: row;
+    width: fit-content;
+  }
+}
+
+.filterSelect {
+  width: 100%;
+  border: 1px solid color.$gray-300;
+  border-radius: 8px;
+  position: relative;
+  height: 44px;
+
+  @media screen and (min-width: breakpoint.$tablet) {
+    width: fit-content;
+    min-width: 160px;
+  }
+}
+
+.filterSelect select {
+  appearance: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  border: none;
+  margin: 0 auto;
+  padding-left: 1em;
+  display: block;
+  color: color.$gray-900;
+  outline: transparent;
+  background-color: #fff;
+}
+
+.filterSelect select[data-active="false"] {
+  color: color.$gray-500;
+}
+
+.filterSelect::before {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+  transform: rotate(135deg);
+  top: 38%;
+  right: 17px;
+  width: 7px;
+  height: 7px;
+  background-color: transparent;
+  border-right: 2px solid color.$gray-500;
+  border-top: 2px solid color.$gray-500;
+}
+
+.filterInput {
+  width: 100%;
+  border: 1px solid color.$gray-300;
+  border-radius: 8px;
+  position: relative;
+  height: 44px;
+  display: flex;
+  align-items: center;
+
+  @media screen and (min-width: breakpoint.$tablet) {
+    width: fit-content;
+    min-width: 200px;
+  }
+
+  @media screen and (min-width: breakpoint.$desktop) {
+    width: 280px;
+  }
+}
+
+.filterInput img {
+  padding-left: 1em;
+}
+
+.filterInput input {
+  height: 90%;
+  border: none;
+  outline: none;
+  color: color.$gray-900;
+  margin-left: 0.4em;
+  background-color: #fff;
+}
+
+.filterInput:focus-within,
+.filterSelect:focus-within {
+  border: 1px solid color.$gray-500;
+}

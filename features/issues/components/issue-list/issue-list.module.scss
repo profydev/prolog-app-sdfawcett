@@ -1,7 +1,6 @@
 @use "@styles/color";
 @use "@styles/space";
 @use "@styles/font";
-@use "@styles/breakpoint";
 
 .container {
   background: white;
@@ -12,6 +11,16 @@
     0 2px 4px -2px rgb(16 24 40 / 6%);
   border-radius: space.$s2;
   overflow: hidden;
+}
+
+// issueOptions
+.issueOptions {
+  margin-block-end: space.$s6;
+}
+
+.issueOptions > *:last-child {
+  justify-self: flex-end;
+  margin-left: auto;
 }
 
 .table {
@@ -52,7 +61,7 @@
 }
 
 .pageInfo {
-  color: color.$gray-400;
+  color: color.$gray-700;
   font: font.$text-sm-regular;
 }
 
@@ -60,12 +69,6 @@
   font: font.$text-sm-medium;
 }
 
-// styles for the loading animation
-.loadingContainer {
-  margin: 9.5rem auto 0;
-  width: space.$s17;
-
-  @media (min-width: breakpoint.$desktop) {
-    margin-top: 8rem;
-  }
+.noIssuesContainer {
+  text-align: center;
 }

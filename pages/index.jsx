@@ -61,8 +61,9 @@ const IssuesPage = () => {
         <img src="/icons/logo-large.svg" alt="Prolog logo" />
 
         <button
-          aria-label="click to open or close the menu open"
+          aria-label="click to open or close the menu"
           aria-controls="home-navigation"
+          aria-expanded={navOpen === true ? true : false}
           onClick={() => setNavOpen(!navOpen)}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}

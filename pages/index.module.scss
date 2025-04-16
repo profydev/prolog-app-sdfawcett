@@ -1,16 +1,26 @@
+@use "@styles/color";
+@use "@styles/font";
+
 .header {
-  width: 100%;
+  width: min(91%, 80rem);
   height: 80px;
+  margin: 0 auto;
   padding: 0 7rem;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: white;
+  position: relative;
 }
 
 .header nav {
   width: 40%;
+}
+
+.header button {
+  background-color: transparent;
+  border: none;
 }
 
 .linkContainer {
@@ -26,6 +36,54 @@
   text-decoration: none;
   color: #667085;
   cursor: pointer;
+}
+
+.navLinks {
+  position: absolute;
+  bottom: -286px;
+  background-color: white;
+  border-radius: 5px;
+  width: 100%;
+  visibility: hidden;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    border: 1px solid color.$gray-300;
+    border-radius: 5px;
+  }
+
+  ul li {
+    padding: 1em;
+  }
+
+  ul li:not(:last-of-type) {
+    border-bottom: 1px solid color.$gray-300;
+  }
+
+  ul li a {
+    text-decoration: none;
+    color: color.$gray-600;
+    font: font.$text-md-medium;
+  }
+
+  ul li:last-of-type a {
+    width: 10.3rem;
+    background-color: color.$primary-600;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0.5em;
+  }
+
+  &[aria-hidden="false"] {
+    visibility: visible;
+  }
 }
 
 .dashboardLink {
@@ -56,5 +114,40 @@
 
   &:hover {
     background: #6941c6;
+  }
+}
+
+@media screen and (width >= 48rem) {
+  .navLinks {
+    position: relative;
+    bottom: 0;
+    border-radius: 0;
+
+    ul {
+      flex-direction: row;
+      border: none;
+      text-align: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    ul li {
+      padding: 0;
+    }
+
+    ul li:not(:last-of-type) {
+      border-bottom: none;
+    }
+
+    ul li:last-of-type {
+      display: none;
+    }
+  }
+}
+
+@media screen and (width >= 90rem) {
+  .navLinks ul {
+    gap: 2rem;
+    transform: translateX(23px);
   }
 }

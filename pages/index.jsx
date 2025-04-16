@@ -48,6 +48,7 @@ const customerList = [
 
 const IssuesPage = () => {
   const [isOpen, setisOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
 
   const toggle = () => {
     setisOpen(!isOpen);
@@ -59,13 +60,29 @@ const IssuesPage = () => {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/icons/logo-large.svg" alt="Prolog logo" />
 
-        <nav>
-          <ul className={styles.linkContainer}>
-            {navItems.map((navItem) => (
-              <li key={navItem.text}>
-                <a href={navItem.href}>{navItem.text}</a>
-              </li>
-            ))}
+        <button
+          aria-label="click to open or close the menu open"
+          aria-controls="home-navigation"
+          onClick={() => setNavOpen(!navOpen)}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/icons/nav-menu.svg" alt="menu" />
+        </button>
+
+        <nav
+          className={styles.navLinks}
+          aria-hidden={navOpen === true ? false : true}
+          id="home-navigation"
+          aria-label="navigation links for the home page"
+        >
+          <ul>
+            {navItems.map((item) => {
+              return (
+                <li key={item.text}>
+                  <a href={item.link}>{item.text}</a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
@@ -74,7 +91,11 @@ const IssuesPage = () => {
         </a>
       </header>
       <main>
-        <section id="hero" aria-label="hero section company introduction">
+        <section
+          id="hero"
+          aria-label="hero section company introduction"
+          className={styles.hero}
+        >
           <h1>Your Issues In Sight. At All Times.</h1>
           <p>
             Powerful error tracking and monitoring for software applications.

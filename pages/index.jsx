@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes } from "@config/routes";
 import styles from "./index.module.scss";
 import Image from "next/image";
@@ -53,6 +53,15 @@ const IssuesPage = () => {
   const toggle = () => {
     setisOpen(!isOpen);
   };
+
+  // use effect to lock and add scroll when nav is open.
+  useEffect(() => {
+    if (navOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [navOpen]);
 
   return (
     <div>

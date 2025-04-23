@@ -25,7 +25,7 @@ const customerList = [
     name: "Mollie Hall",
     title: "Web Developer, Sisyphus",
     avatar: "/images/mollie-hall.png",
-    category: "Frontend Developer",
+    category: "Frontend Development",
     testimonial:
       "Prolog has saved us many times. We get an alert, investgate the error, and fix it. That simple.",
   },
@@ -148,24 +148,33 @@ const IssuesPage = () => {
           </ul>
         </section>
 
-        <section id="testimonials" aria-label="Customer testimonials">
-          <h2>Don&#39;t Only Trust Our Words</h2>
-          <p>Our Customers around the globe share their opinions.</p>
+        <section
+          id="testimonials"
+          aria-label="Customer testimonials"
+          className={styles.testimonials}
+        >
+          <div className={styles.testimonialsTitle}>
+            <h2>Don&#39;t Only Trust Our Words</h2>
+            <p>Our customers around the globe share their opinions.</p>
+          </div>
 
-          <div>
+          <div className={styles.testimonialCards}>
             {customerList.map((customer) => (
               <div key={customer.name} className={styles.customer}>
                 <div>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={customer.avatar}
-                    alt={`${customer.name} avatar`}
-                  ></img>
-                  <h3>{customer.name}</h3>
-                  <p>{customer.title}</p>
+                  <h3 className={styles.customerCategory}>
+                    {customer.category}
+                  </h3>
+                  <p className={styles.customerText}>{customer.testimonial}</p>
                 </div>
-                <p>{customer.category}</p>
-                <p>{customer.testimonial}</p>
+
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={customer.avatar}
+                  alt={`${customer.name} avatar`}
+                ></img>
+                <p className={styles.customerName}>{customer.name}</p>
+                <p className={styles.customerTitle}>{customer.title}</p>
               </div>
             ))}
           </div>

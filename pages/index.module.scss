@@ -139,6 +139,7 @@
   width: min(91%, 80rem);
   margin: 0 auto;
   padding: 3em 0;
+  padding-bottom: 2.8em;
 }
 
 .companies > p {
@@ -154,6 +155,72 @@
   display: grid;
   gap: 1.85em;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+// testimonials
+
+.testimonials {
+  background-color: color.$gray-50;
+}
+
+.testimonialsTitle {
+  width: min(92%, 80rem);
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 4em;
+}
+
+.testimonialsTitle h2 {
+  font: font.$display-md-semibold;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.testimonialsTitle p {
+  font: font.$text-md-medium;
+  color: color.$gray-500;
+  margin-block-start: 1.2em;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+}
+
+.testimonialCards {
+  margin-block-start: 4em;
+}
+
+.customer {
+  background-color: color.$primary-50;
+  padding: 3.1em 1.5em;
+  text-align: center;
+
+  &:nth-child(even) {
+    background-color: color.$gray-50;
+  }
+}
+
+.customerCategory {
+  font: font.$text-sm-semibold;
+  color: color.$primary-700;
+}
+
+.customerText {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 500;
+  color: color.$primary-900;
+  margin-block-start: 0.5em;
+}
+
+.customerName {
+  margin-block: 0.7em 0;
+  font: font.$text-md-medium;
+  color: color.$primary-900;
+}
+
+.customerTitle {
+  margin-block-start: 0.2em;
+  font: font.$text-sm-regular;
+  color: color.$primary-700;
 }
 
 .contactButton {

@@ -105,6 +105,7 @@
 .hero {
   background-color: color.$gray-50;
   padding-top: 4.1em;
+  padding-bottom: 3.9em;
 }
 
 .heroContainer {
@@ -131,6 +132,28 @@
   text-align: center;
   line-height: 1.75rem;
   margin-block-start: 1.2rem;
+}
+
+// company list
+.companies {
+  width: min(91%, 80rem);
+  margin: 0 auto;
+  padding: 3em 0;
+}
+
+.companies > p {
+  text-align: center;
+  font: font.$text-md-medium;
+  color: color.$gray-500;
+}
+
+.companyList {
+  list-style: none;
+  padding: 0;
+  margin-block-start: 1.85em;
+  display: grid;
+  gap: 1.85em;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
 
 .contactButton {

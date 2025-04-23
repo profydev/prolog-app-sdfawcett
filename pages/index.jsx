@@ -106,18 +106,23 @@ const IssuesPage = () => {
           aria-label="hero section company introduction"
           className={styles.hero}
         >
-          <h1>Your Issues In Sight. At All Times.</h1>
-          <p>
-            Powerful error tracking and monitoring for software applications.
-            Trusted by over 4,000 startups.
-          </p>
-          <Image
-            src="/images/macbook.png"
-            width={753}
-            height={445}
-            alt="prolog application being used on a macbook pro"
-            priority={true}
-          ></Image>
+          <div className={styles.heroContainer}>
+            <h1>
+              Your Issues In Sight.
+              <br /> At All Times.
+            </h1>
+            <p>
+              Powerful error tracking and monitoring for software applications.
+              Trusted by over 4,000 startups.
+            </p>
+            <Image
+              src="/images/macbook.png"
+              width={753}
+              height={445}
+              alt="prolog application being used on a macbook pro"
+              priority={true}
+            ></Image>
+          </div>
         </section>
 
         <section

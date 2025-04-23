@@ -3,7 +3,7 @@
 
 .header {
   width: min(91%, 80rem);
-  height: 80px;
+  height: 70px;
   margin: 0 auto;
   padding: 0 7rem;
   box-sizing: border-box;
@@ -99,6 +99,38 @@
   background-color: #7f56d9;
   color: #fff;
   text-decoration: none;
+}
+
+// hero banner
+.hero {
+  background-color: color.$gray-50;
+  padding-top: 4.1em;
+}
+
+.heroContainer {
+  width: min(91%, 80rem);
+  margin: 0 auto;
+}
+
+.heroContainer img {
+  width: 343px;
+  height: 200.31px;
+  margin-block-start: 2.7em;
+}
+
+.heroContainer h1 {
+  font: font.$display-md-semibold;
+  text-align: center;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+.heroContainer p {
+  font-size: 1.125rem;
+  color: color.$gray-500;
+  text-align: center;
+  line-height: 1.75rem;
+  margin-block-start: 1.2rem;
 }
 
 .contactButton {

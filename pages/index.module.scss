@@ -231,9 +231,9 @@
 }
 
 .contactButton {
-  position: absolute;
-  bottom: 2.5rem;
-  right: 2.5rem;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
   padding: 1rem;
   background: #7f56d9;
   border-radius: 50%;
@@ -392,5 +392,10 @@
 
   .customerInfo {
     margin-top: auto;
+  }
+
+  .contactButton {
+    right: 30px;
+    bottom: 30px;
   }
 }

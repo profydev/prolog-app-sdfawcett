@@ -3,6 +3,7 @@ import { Routes } from "@config/routes";
 import styles from "./index.module.scss";
 import Image from "next/image";
 import { ContactModal } from "../features/ui/contact-modal";
+import useIsMobile from "../features/hooks/useIsMobile";
 
 const navItems = [
   { text: "Home", href: Routes.home },
@@ -50,6 +51,7 @@ const customerList = [
 const IssuesPage = () => {
   const [isOpen, setisOpen] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   const toggle = () => {
     setisOpen(!isOpen);
@@ -57,12 +59,11 @@ const IssuesPage = () => {
 
   // use effect to lock and add scroll when nav is open.
   useEffect(() => {
-    if (navOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
+    if (isMobile) setNavOpen(false);
+    else {
+      setNavOpen(true);
     }
-  }, [navOpen]);
+  }, [isMobile]);
 
   return (
     <div>
@@ -71,10 +72,18 @@ const IssuesPage = () => {
         <img src="/icons/logo-large.svg" alt="Prolog logo" />
 
         <button
-          aria-label="click to open or close the menu"
+          aria-label={`click to ${navOpen === true ? "close" : "open"} menu}`}
           aria-controls="home-navigation"
           aria-expanded={navOpen === true ? true : false}
-          onClick={() => setNavOpen(!navOpen)}
+          onClick={() => {
+            if (navOpen === true) {
+              setNavOpen(false);
+              document.body.style.overflow = "unset";
+            } else {
+              setNavOpen(true);
+              document.body.style.overflow = "hidden";
+            }
+          }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/icons/nav-menu.svg" alt="menu" />

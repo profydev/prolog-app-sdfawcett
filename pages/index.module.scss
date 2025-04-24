@@ -240,6 +240,10 @@
 }
 
 @media screen and (width >= 48rem) {
+  .header > button {
+    display: none;
+  }
+
   .navLinks {
     position: relative;
     bottom: 0;
@@ -264,6 +268,10 @@
     ul li:last-of-type {
       display: none;
     }
+  }
+
+  .dashboardLink {
+    display: block;
   }
 }
 

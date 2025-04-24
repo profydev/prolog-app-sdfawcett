@@ -2,7 +2,7 @@
 @use "@styles/font";
 
 .header {
-  width: min(91%, 80rem);
+  width: min(91%, 76rem);
   height: 70px;
   margin: 0 auto;
   padding: 0 7rem;
@@ -311,8 +311,32 @@
 }
 
 @media screen and (width >= 90rem) {
+  .header {
+    height: 80px;
+  }
+
   .navLinks ul {
     gap: 2rem;
     transform: translateX(23px);
+  }
+
+  .heroContainer {
+    padding-top: 2.8em;
+  }
+
+  .heroContainer h1 {
+    font-size: 3.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .heroContainer p {
+    font-size: 1.25rem;
+    margin-block-start: 2em;
+  }
+
+  .heroContainer img {
+    width: 768px;
+    height: 448.5px;
+    margin-block-start: 4.1em;
   }
 }

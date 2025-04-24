@@ -4,6 +4,10 @@ const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    if (window.innerWidth < 768) setIsMobile(true);
+  }, []);
+
+  useEffect(() => {
     function detectWindowSize() {
       window.innerWidth < 768 ? setIsMobile(true) : setIsMobile(false);
     }

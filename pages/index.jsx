@@ -179,13 +179,15 @@ const IssuesPage = () => {
                   <p className={styles.customerText}>{customer.testimonial}</p>
                 </div>
 
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={customer.avatar}
-                  alt={`${customer.name} avatar`}
-                ></img>
-                <p className={styles.customerName}>{customer.name}</p>
-                <p className={styles.customerTitle}>{customer.title}</p>
+                <div className={styles.customerInfo}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={customer.avatar}
+                    alt={`${customer.name} avatar`}
+                  ></img>
+                  <p className={styles.customerName}>{customer.name}</p>
+                  <p className={styles.customerTitle}>{customer.title}</p>
+                </div>
               </div>
             ))}
           </div>

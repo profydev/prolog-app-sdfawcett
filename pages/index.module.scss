@@ -114,7 +114,7 @@
 }
 
 .heroContainer img {
-  width: 343px;
+  width: min(100%, 343px);
   height: 200.31px;
   margin: 0 auto;
   display: block;

@@ -140,21 +140,23 @@ const IssuesPage = () => {
           aria-label="description of companies that use ProLog"
           className={styles.companies}
         >
-          <p>Join 4,000+ companies using Prolog</p>
-          <ul
-            className={styles.companyList}
-            aria-label="list of companies that use prolog"
-          >
-            {companyList.map((company) => (
-              <li key={company.name}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={company.icon}
-                  alt={`Logo for the ${company.name} logo`}
-                ></img>
-              </li>
-            ))}
-          </ul>
+          <div className={styles.companiesContainer}>
+            <p>Join 4,000+ companies using Prolog</p>
+            <ul
+              className={styles.companyList}
+              aria-label="list of companies that use prolog"
+            >
+              {companyList.map((company) => (
+                <li key={company.name}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={company.icon}
+                    alt={`Logo for the ${company.name} logo`}
+                  ></img>
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
 
         <section

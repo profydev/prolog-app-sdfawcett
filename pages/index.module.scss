@@ -138,10 +138,13 @@
 
 // company list
 .companies {
-  width: min(91%, 80rem);
-  margin: 0 auto;
   padding: 3em 0;
   padding-bottom: 2.8em;
+}
+
+.companiesContainer {
+  width: min(91%, 76rem);
+  margin: 0 auto;
 }
 
 .companies > p {
@@ -338,5 +341,21 @@
     width: 768px;
     height: 448.5px;
     margin-block-start: 4.1em;
+  }
+
+  .companies {
+    background-color: color.$gray-50;
+    padding: 7em 0;
+    padding-bottom: 4.9em;
+  }
+
+  .companyList {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    margin-block-start: 2em;
+  }
+
+  .companyList li > img {
+    width: 146px;
+    height: 48px;
   }
 }

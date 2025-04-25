@@ -4,6 +4,7 @@ import styles from "./index.module.scss";
 import Image from "next/image";
 import { ContactModal } from "../features/ui/contact-modal";
 import useIsMobile from "../features/hooks/useIsMobile";
+import { Testimonials } from "@features/ui";
 
 const navItems = [
   { text: "Home", href: Routes.home },
@@ -169,28 +170,7 @@ const IssuesPage = () => {
             <p>Our customers around the globe share their opinions.</p>
           </div>
 
-          <div className={styles.testimonialCards}>
-            {customerList.map((customer) => (
-              <div key={customer.name} className={styles.customer}>
-                <div>
-                  <h3 className={styles.customerCategory}>
-                    {customer.category}
-                  </h3>
-                  <p className={styles.customerText}>{customer.testimonial}</p>
-                </div>
-
-                <div className={styles.customerInfo}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={customer.avatar}
-                    alt={`${customer.name} avatar`}
-                  ></img>
-                  <p className={styles.customerName}>{customer.name}</p>
-                  <p className={styles.customerTitle}>{customer.title}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <Testimonials testimonials={customerList} />
         </section>
       </main>
       <button className={styles.contactButton} onClick={toggle}>

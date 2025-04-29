@@ -66,7 +66,7 @@ const IssuesPage = () => {
   }, [isMobile]);
 
   return (
-    <div>
+    <div className={styles.index}>
       <header className={styles.header}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/icons/logo-large.svg" alt="Prolog logo" />

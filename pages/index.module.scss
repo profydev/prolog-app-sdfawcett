@@ -1,21 +1,22 @@
 @use "@styles/color";
 @use "@styles/font";
 
+.index {
+  min-height: 100vh;
+  min-height: 100svh;
+  position: relative;
+}
+
 .header {
   width: min(91%, 76rem);
   height: 70px;
   margin: 0 auto;
-  padding: 0 7rem;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: white;
   position: relative;
-}
-
-.header nav {
-  width: 40%;
 }
 
 .header button {
@@ -40,7 +41,7 @@
 
 .navLinks {
   position: absolute;
-  bottom: -286px;
+  bottom: -229px;
   background-color: white;
   border-radius: 5px;
   width: 100%;
@@ -87,18 +88,14 @@
 }
 
 .dashboardLink {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 2.85rem;
-  width: 10rem;
-  text-align: center;
-  font-weight: 500;
-  font-size: 1rem;
-  border-radius: 8px;
-  background-color: #7f56d9;
+  min-width: 10.3rem;
+  background-color: color.$primary-600;
   color: #fff;
   text-decoration: none;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0.8em 0;
+  display: none;
 }
 
 // hero banner
@@ -278,10 +275,6 @@
     }
   }
 
-  .dashboardLink {
-    display: block;
-  }
-
   .heroContainer h1 > br {
     display: none;
   }
@@ -295,6 +288,10 @@
   .heroContainer img {
     width: 650px;
     height: 400px;
+  }
+
+  .dashboardLink {
+    display: flex;
   }
 
   .companies {

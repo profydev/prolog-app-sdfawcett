@@ -1,16 +1,27 @@
+@use "@styles/color";
+@use "@styles/font";
+
+.index {
+  min-height: 100vh;
+  min-height: 100svh;
+  position: relative;
+}
+
 .header {
-  width: 100%;
-  height: 80px;
-  padding: 0 7rem;
+  width: min(91%, 76rem);
+  height: 70px;
+  margin: 0 auto;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: white;
+  position: relative;
 }
 
-.header nav {
-  width: 40%;
+.header button {
+  background-color: transparent;
+  border: none;
 }
 
 .linkContainer {
@@ -28,25 +39,199 @@
   cursor: pointer;
 }
 
-.dashboardLink {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 2.85rem;
-  width: 10rem;
-  text-align: center;
-  font-weight: 500;
-  font-size: 1rem;
-  border-radius: 8px;
-  background-color: #7f56d9;
-  color: #fff;
-  text-decoration: none;
+.navLinks {
+  position: absolute;
+  bottom: -229px;
+  background-color: white;
+  border-radius: 5px;
+  width: 100%;
+  visibility: hidden;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    border: 1px solid color.$gray-300;
+    border-radius: 5px;
+  }
+
+  ul li {
+    padding: 1em;
+  }
+
+  ul li:not(:last-of-type) {
+    border-bottom: 1px solid color.$gray-300;
+  }
+
+  ul li a {
+    text-decoration: none;
+    color: color.$gray-600;
+    font: font.$text-md-medium;
+  }
+
+  ul li:last-of-type a {
+    width: 10.3rem;
+    background-color: color.$primary-600;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0.5em;
+  }
+
+  &[aria-hidden="false"] {
+    visibility: visible;
+  }
 }
 
+.dashboardLink {
+  min-width: 10.3rem;
+  background-color: color.$primary-600;
+  color: #fff;
+  text-decoration: none;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0.8em 0;
+  display: none;
+}
+
+// hero banner
+.hero {
+  background-color: color.$gray-50;
+  padding-top: 4.1em;
+  padding-bottom: 4.2em;
+}
+
+.heroContainer {
+  width: min(91%, 80rem);
+  margin: 0 auto;
+}
+
+.heroContainer img {
+  width: min(100%, 343px);
+  height: 200.31px;
+  margin: 0 auto;
+  display: block;
+  margin-block-start: 2.7em;
+}
+
+.heroContainer h1 {
+  font: font.$display-md-semibold;
+  text-align: center;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
+
+.heroContainer p {
+  font-size: 1.125rem;
+  color: color.$gray-500;
+  text-align: center;
+  line-height: 1.75rem;
+  margin-block-start: 1.2rem;
+}
+
+// company list
+.companies {
+  padding: 3em 0;
+  padding-bottom: 2.8em;
+}
+
+.companiesContainer {
+  width: min(91%, 76rem);
+  margin: 0 auto;
+}
+
+.companies > p {
+  text-align: center;
+  font: font.$text-md-medium;
+  color: color.$gray-500;
+}
+
+.companyList {
+  list-style: none;
+  padding: 0;
+  margin-block-start: 1.85em;
+  display: grid;
+  gap: 1.85em;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+// testimonials
+
+.testimonials {
+  background-color: color.$gray-50;
+}
+
+.testimonialsTitle {
+  width: min(92%, 80rem);
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 4em;
+}
+
+.testimonialsTitle h2 {
+  font: font.$display-md-semibold;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.testimonialsTitle p {
+  font: font.$text-md-medium;
+  color: color.$gray-500;
+  margin-block-start: 1.2em;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+}
+
+.testimonialCards {
+  margin-block-start: 4em;
+}
+
+.customer {
+  background-color: color.$primary-50;
+  padding: 3.1em 1.5em;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  &:nth-child(even) {
+    background-color: color.$gray-50;
+  }
+}
+
+.customerCategory {
+  font: font.$text-sm-semibold;
+  color: color.$primary-700;
+}
+
+.customerText {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 500;
+  color: color.$primary-900;
+  margin-block-start: 0.5em;
+}
+
+.customerName {
+  margin-block: 0.7em 0;
+  font: font.$text-md-medium;
+  color: color.$primary-900;
+}
+
+.customerTitle {
+  margin-block-start: 0.2em;
+  font: font.$text-sm-regular;
+  color: color.$primary-700;
+}
+
+// support button
 .contactButton {
-  position: absolute;
-  bottom: 2.5rem;
-  right: 2.5rem;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
   padding: 1rem;
   background: #7f56d9;
   border-radius: 50%;
@@ -56,5 +241,159 @@
 
   &:hover {
     background: #6941c6;
+  }
+}
+
+@media screen and (width >= 48rem) {
+  .header > button {
+    display: none;
+  }
+
+  .navLinks {
+    position: relative;
+    bottom: 0;
+    border-radius: 0;
+
+    ul {
+      flex-direction: row;
+      border: none;
+      text-align: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    ul li {
+      padding: 0;
+    }
+
+    ul li:not(:last-of-type) {
+      border-bottom: none;
+    }
+
+    ul li:last-of-type {
+      display: none;
+    }
+  }
+
+  .heroContainer h1 > br {
+    display: none;
+  }
+
+  .heroContainer p {
+    width: 40.5rem;
+    margin: 0 auto;
+    margin-block-start: 1.2rem;
+  }
+
+  .heroContainer img {
+    width: 650px;
+    height: 400px;
+  }
+
+  .dashboardLink {
+    display: flex;
+  }
+
+  .companies {
+    background-color: color.$gray-50;
+  }
+
+  .testimonials {
+    background-color: #fff;
+    padding-bottom: 75px;
+  }
+
+  .testimonialCards {
+    display: grid;
+    width: min(92%, 80rem);
+    margin: 0 auto;
+    margin-block-start: 4em;
+    grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
+    gap: 2rem;
+  }
+
+  .customer {
+    border-radius: 16px;
+  }
+}
+
+@media screen and (width >= 90rem) {
+  .header {
+    height: 80px;
+  }
+
+  .navLinks ul {
+    gap: 2rem;
+    transform: translateX(23px);
+  }
+
+  .heroContainer {
+    padding-top: 2.8em;
+  }
+
+  .heroContainer h1 {
+    font-size: 3.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .heroContainer p {
+    font-size: 1.25rem;
+    margin-block-start: 2em;
+  }
+
+  .heroContainer img {
+    width: 768px;
+    height: 448.5px;
+    margin-block-start: 4.1em;
+  }
+
+  .companies {
+    background-color: color.$gray-50;
+    padding: 7em 0;
+    padding-bottom: 4.8em;
+  }
+
+  .companyList {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    margin-block-start: 2em;
+  }
+
+  .companyList li > img {
+    width: 146px;
+    height: 48px;
+  }
+
+  // testinomials
+  .testimonials {
+    padding-top: 2.6em;
+    padding-bottom: 2em;
+  }
+
+  .testimonialsTitle h2 {
+    font-size: 3.75rem;
+  }
+
+  .testimonialsTitle p {
+    margin-block-start: 2em;
+  }
+
+  .testimonialCards {
+    grid-template-columns: repeat(3, 375px);
+    justify-content: space-between;
+    width: min(92%, 1255px);
+  }
+
+  .customer {
+    padding: 0;
+    padding: 1.5em;
+  }
+
+  .customerInfo {
+    margin-top: auto;
+  }
+
+  .contactButton {
+    right: 30px;
+    bottom: 30px;
   }
 }

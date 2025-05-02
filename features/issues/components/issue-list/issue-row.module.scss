@@ -1,6 +1,21 @@
+@use "@styles/breakpoint";
 @use "@styles/color";
 @use "@styles/space";
 @use "@styles/font";
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "issue issue issue" "level events users";
+
+  @media (min-width: breakpoint.$tablet) {
+    display: table-row;
+
+    .row:nth-child(2n) {
+      background: color.$gray-50;
+    }
+  }
+}
 
 .row:nth-child(2n) {
   background: color.$gray-50;
@@ -14,6 +29,7 @@
 
 .issueCell {
   composes: cell;
+  grid-area: issue;
   display: flex;
   align-items: center;
 }
@@ -29,4 +45,25 @@
 
 .errorType {
   font: font.$text-sm-medium;
+}
+
+.statsCell {
+  composes: cell;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: space.$s2;
+
+  @media screen and (min-width: breakpoint.$tablet) {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+.statsLabel {
+  font: font.$text-sm-medium;
+
+  @media screen and (min-width: breakpoint.$tablet) {
+    display: none;
+  }
 }

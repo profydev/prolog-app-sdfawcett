@@ -1,16 +1,20 @@
+@use "@styles/breakpoint";
 @use "@styles/color";
 @use "@styles/space";
 @use "@styles/font";
 
 .container {
-  background: white;
-  border: 1px solid color.$gray-200;
   box-sizing: border-box;
-  box-shadow:
-    0 4px 8px -2px rgb(16 24 40 / 10%),
-    0 2px 4px -2px rgb(16 24 40 / 6%);
-  border-radius: space.$s2;
   overflow: hidden;
+
+  @media (min-width: breakpoint.$tablet) {
+    background: white;
+    border: 1px solid color.$gray-200;
+    box-shadow:
+      0 4px 8px -2px rgb(16 24 40 / 10%),
+      0 2px 4px -2px rgb(16 24 40 / 6%);
+    border-radius: space.$s2;
+  }
 }
 
 // issueOptions
@@ -25,11 +29,29 @@
 
 .table {
   width: 100%;
+  display: block;
   border-collapse: collapse;
+
+  @media (min-width: breakpoint.$tablet) {
+    display: table;
+  }
+}
+
+.tbody {
+  display: block;
+
+  @media (min-width: breakpoint.$tablet) {
+    display: table-row-group;
+  }
 }
 
 .headerRow {
+  display: none;
   border-bottom: 1px solid color.$gray-200;
+
+  @media (min-width: breakpoint.$tablet) {
+    display: table-row;
+  }
 }
 
 .headerCell {

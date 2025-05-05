@@ -10,6 +10,7 @@ const navItems = [
   { text: "Products", href: Routes.products },
   { text: "Documentation", href: Routes.documentation },
   { text: "Pricing", href: Routes.pricing },
+  { text: "Dashboard", link: Routes.projects },
 ];
 
 const companyList = [

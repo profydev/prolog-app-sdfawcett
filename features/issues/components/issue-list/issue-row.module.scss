@@ -1,19 +1,51 @@
+@use "@styles/breakpoint";
 @use "@styles/color";
 @use "@styles/space";
 @use "@styles/font";
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "issue issue issue" "level events users";
+  padding: 0.75rem 1.5rem;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid color.$gray-200;
+  background: #fff;
+  box-shadow:
+    0 1px 2px 0 rgb(16 24 40 / 6%),
+    0 1px 3px 0 rgb(16 24 40 / 10%);
+
+  @media (min-width: breakpoint.$tablet) {
+    display: table-row;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: none;
+
+    .row:nth-child(2n) {
+      background: color.$gray-50;
+    }
+  }
+}
 
 .row:nth-child(2n) {
   background: color.$gray-50;
 }
 
 .cell {
-  padding: space.$s4 space.$s6;
+  padding: space.$s4 0;
   color: color.$gray-500;
   font: font.$text-sm-regular;
+
+  @media (min-width: breakpoint.$tablet) {
+    padding: space.$s4 space.$s6;
+  }
 }
 
 .issueCell {
   composes: cell;
+  grid-area: issue;
   display: flex;
   align-items: center;
 }
@@ -29,4 +61,25 @@
 
 .errorType {
   font: font.$text-sm-medium;
+}
+
+.statsCell {
+  composes: cell;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: space.$s2;
+
+  @media screen and (min-width: breakpoint.$tablet) {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+.statsLabel {
+  font: font.$text-sm-medium;
+
+  @media screen and (min-width: breakpoint.$tablet) {
+    display: none;
+  }
 }

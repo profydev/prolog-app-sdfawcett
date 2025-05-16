@@ -43,13 +43,13 @@ jobs:
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Debug Build Outputs  # Add this step
+      - name: Debug Build Outputs # Add this step
         run: ls -la .next/ && ls -la .vercel/
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: build-artifacts
-          path: | 
+          path: |
             .next/
             .vercel/
 

@@ -33,6 +33,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - run: ls -a .
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
@@ -44,7 +45,7 @@ jobs:
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Debug Build Outputs # Add this step
-        run: ls -la .next/ && ls -la .vercel/
+        run: ls -a .
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -95,5 +96,6 @@ jobs:
         with:
           name: build-artifacts
           path: .next/
+      - run: ls -a .
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}

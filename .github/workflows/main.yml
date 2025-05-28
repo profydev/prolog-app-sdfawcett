@@ -73,7 +73,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          start: npm start
+          start: npx vercel dev --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
 
   install:
     runs-on: ubuntu-latest

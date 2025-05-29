@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v3
         with:
           node-version: "20"
           cache: "npm"
@@ -42,7 +42,7 @@ jobs:
       - name: Debug Build Outputs # Add this step
         run: ls -a .
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v2
         with:
           name: build-artifacts
           path: |
@@ -56,12 +56,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v3
         with:
           node-version: "20"
           cache: "npm"
       - name: Download Build Artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v2
         with:
           name: build-artifacts
       - name: Cypress run
@@ -77,7 +77,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Download Build Artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v2
         with:
           name: build-artifacts
       - name: Deploy Project Artifacts to Vercel
@@ -91,7 +91,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Download Build Artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v2
         with:
           name: build-artifacts
       - name: Deploy Project Artifacts to Vercel

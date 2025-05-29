@@ -53,6 +53,7 @@ jobs:
           path: |
             .next/
             .vercel/output/
+      - run: ls -a .
 
   e2e:
     runs-on: ubuntu-latest
@@ -73,7 +74,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          start: npx vercel dev --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+          start: npm start
 
   install:
     runs-on: ubuntu-latest
